@@ -2,13 +2,21 @@
 
 <h1>Events</h1>
 
-<div id="events">
-  <% @events.each do |event| %>
-    <%= render event %>
-    <p>
-      <%= link_to "Show this event", event %>
-    </p>
-  <% end %>
+<div id="events" class="container">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+    <% @events.each do |event| %>
+      <div class="col mb-4">
+        <div class="card">
+          <%= render event %>
+          <div class="card-body">
+            <p class="card-text">
+              <%= link_to "Show this event", event %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <%= link_to "New event", new_event_path %>
