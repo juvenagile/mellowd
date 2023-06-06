@@ -19,6 +19,7 @@ class EventsTest < ApplicationSystemTestCase
     fill_in "Duration", with: @event.duration
     fill_in "Genre", with: @event.genre
     fill_in "Location", with: @event.location
+    fill_in "Time", with: @event.time
     fill_in "Title", with: @event.title
     click_on "Create Event"
 
@@ -35,6 +36,7 @@ class EventsTest < ApplicationSystemTestCase
     fill_in "Duration", with: @event.duration
     fill_in "Genre", with: @event.genre
     fill_in "Location", with: @event.location
+    fill_in "Time", with: @event.time
     fill_in "Title", with: @event.title
     click_on "Update Event"
 
