@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :events
-  root to: "pages#home"
-  get "/about", to: "pages#about"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root to: "events#index"
+  resources :events do
+    resources :bookings, only: %i[index]
+  end
 end

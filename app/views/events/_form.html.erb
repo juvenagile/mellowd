@@ -3,13 +3,14 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
+  <div class="form-inputs border-danger border-5">
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :date %>
     <%= f.input :duration %>
     <%= f.input :genre %>
     <%= f.input :location %>
+    <%= f.input :time %>
   </div>
 
   <div class="form-actions">
