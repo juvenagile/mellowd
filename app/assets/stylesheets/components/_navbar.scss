@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: rgb(40, 3, 76);
+}
+
+.navbar-lewagon .nav-item {
+  color: rgb(255, 255, 255);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,3 +14,21 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-nav li a {
+  color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin-right: 10px;
+  transition: border-radius 3.0s ease-in-out;
+}
+
+.navbar-nav li a:hover {
+  background-color: white;
+  border-radius: 15px;
+}
+
+button {
+color: white;
+}
+
