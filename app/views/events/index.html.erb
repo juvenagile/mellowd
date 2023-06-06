@@ -19,5 +19,5 @@
   </div>
 </div>
 <div style="position: fixed; bottom: 20px; right: 20px;">
-  <%= link_to "+", new_event_path, class: "text-xl rounded-circle btn btn-primary btn-lg" %>
+  <%= link_to "+", new_event_path if policy(Event).new? class: "text-xl rounded-circle btn btn-primary btn-lg" %>
 </div>
