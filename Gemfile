@@ -18,7 +18,7 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 #Use Pundit for Authorization
-# gem "pundit"
+gem "pundit"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
