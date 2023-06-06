@@ -1,16 +1,15 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Events</h1>
-
 <div id="events" class="container">
+<h1 class="display-4 text-white">Events</h1>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
     <% @events.each do |event| %>
       <div class="col mb-4">
         <div class="card">
-          <%= render event %>
-          <div class="card-body">
+          <img src="https://picsum.photos/seed/picsum/200/200" class="rounded" style="border-radius: 15px !important;">
+           <%= render event %>
+          <div class="card-body text-center">
             <p class="card-text">
-              <%= link_to "Show this event", event %>
+              <%= link_to "Show this event", event, class: "btn btn-primary btn-lg btn-block" %>
             </p>
           </div>
         </div>
@@ -18,5 +17,6 @@
     <% end %>
   </div>
 </div>
-
-<%= link_to "New event", new_event_path %>
+<div style="position: fixed; bottom: 20px; right: 20px;">
+  <%= link_to "+", new_event_path, class: "text-xl rounded-circle btn btn-primary btn-lg" %>
+</div>
