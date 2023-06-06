@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: "events#index"
   devise_for :users
-  resources :events
+  root to: "events#index"
+  resources :events do
+    resources :bookings, only: %i[index]
+  end
 end
