@@ -1,27 +1,32 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :set_event, only: %i[show edit update destroy]
 
   # GET /events
   def index
-    @events = Event.all
+    @events = policy_scope(Event)
   end
 
   # GET /events/1
   def show
+    authorize @event
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    authorize @event
   end
 
   # GET /events/1/edit
   def edit
+    authorize @event
   end
 
   # POST /events
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
+    authorize @event
 
     if @event.save
       redirect_to @event, notice: "Event was successfully created."
@@ -37,11 +42,13 @@ class EventsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+    authorize @event
   end
 
   # DELETE /events/1
   def destroy
     @event.destroy
+    authorize @event
     redirect_to events_url, notice: "Event was successfully destroyed.", status: :see_other
   end
 
