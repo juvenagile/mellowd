@@ -16,8 +16,7 @@ GENRE = %w[rock pop urban dance/dj ballads tropical regional country instrumenta
     date: Date.today + rand(1..180),
     duration: rand(30..120),
     genre: GENRE.sample,
-    location: ["New York", "Los Angeles", "Chicago", "Houston", "Philadelphia"].sample,
-    image_url: 'https://picsum.photos/200/300'
+    location: ["New York", "Los Angeles", "Chicago", "Houston", "Philadelphia"].sample
   )
   puts 'Done'
 end
