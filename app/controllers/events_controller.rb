@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    # authorize @event
+    authorize @event
   end
 
   # POST /events
@@ -37,12 +37,12 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   def update
+    authorize @event
     if @event.update(event_params)
       redirect_to @event, notice: "Event was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
-    authorize @event
   end
 
   # DELETE /events/1
