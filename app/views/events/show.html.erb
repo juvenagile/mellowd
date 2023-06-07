@@ -16,7 +16,7 @@
     <i i class="fa fa-pencil"></i>
   <% end %>
 <% end %>
-<%= button_to @event, method: :delete if policy(@event).destroy?, data: { confirm: "Are you sure?" } do %>
+<%= button_to @event, method: :delete, data: { confirm: "Are you sure?" } do %>
   <i class="fa fa-trash"></i>
 <% end %>
   </div>
