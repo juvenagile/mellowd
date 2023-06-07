@@ -1,19 +1,26 @@
-
 <%= simple_form_for(@event) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs border-danger border-5">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :date %>
-    <%= f.input :duration %>
-    <%= f.input :genre %>
-    <%= f.input :location %>
-    <%= f.input :time %>
+  <div class="form-inputs border border-light p-4 rounded mb-4">
+    <%= f.input :title, label: "Event title" %>
+    <%= f.input :genre, as: :select, collection: %w[rock pop urban dance/dj ballads tropical regional country instrumental choir], label: "Music genre" %>
+    <%= f.input :description, label: "Description of the event" %>
+    <%= f.input :location, label: "Event location" %>
+    <h4 class="my-3">Event details</h4>
+<label>Date and time</label>
+    <div class="row">
+      <div class="col">
+        <%= f.input :date, label: false %>
+      </div>
+      <div class="col">
+        <%= f.input :time, label: false %>
+      </div>
+    </div>
+    <%= f.input :duration, label: "Show duration" %>
   </div>
 
-  <div class="form-actions btn btn-primary">
-    <%= f.button :submit %>
-  </div>
+<div class="form-actions btn btn-primary">
+  <%= f.button :submit, style: "color: white;" %>
+</div>
 <% end %>

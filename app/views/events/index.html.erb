@@ -1,19 +1,14 @@
-<p style="color: green"><%= notice %></p>
-
 <div id="events" class="container">
-<h1 class="display-4 text-white">Events</h1>
+  <h1 class="display-4 text-white">Events</h1>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
     <% @events.each do |event| %>
       <div class="col mb-4">
-        <div class="card">
-          <img src="https://picsum.photos/seed/picsum/200/200" class="rounded" style="border-radius: 15px !important;">
-           <%= render event %>
-          <div class="card-body text-center">
-            <p class="card-text">
-              <%= link_to "Show this event", event, class: "btn btn-primary btn-lg btn-block" %>
-            </p>
+        <%= link_to event, class: "text-decoration-none" do %>
+          <div class="card">
+            <img src="https://picsum.photos/seed/picsum/200/200" class="rounded" style="border-radius: 15px !important;">
+            <%= render event %>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
