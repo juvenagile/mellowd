@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    authorize @event
+    # authorize @event
   end
 
   # POST /events
