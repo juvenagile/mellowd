@@ -1,0 +1,17 @@
+<h2>Events I Applied To:</h2>
+<% @applied_events.each do |event| %>
+  <div class="event">
+    <h3><%= event.title %></h3>
+    <p>Description: <%= event.description %></p>
+    <!-- Display other event details as needed -->
+  </div>
+<% end %>
+
+<h2>Events I Created:</h2>
+<% @created_events.each do |event| %>
+  <div class="event">
+    <h3><%= event.title %></h3>
+    <p>Description: <%= event.description %></p>
+    <!-- Display other event details as needed -->
+  </div>
+<% end %>

@@ -1,6 +1,14 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
+  # GET /events/my_events
+  def my_events
+    @user = current_user
+    @applied_events = current_user.events
+    @created_events = current_user.bookings.includes(:event).map(&:event)
+    authorize @event
+  end
+
   # GET /events
   def index
     @events = policy_scope(Event)
@@ -60,6 +68,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:title, :description, :date, :duration, :genre, :location, :time, :user_id)
+      params.require(:event).permit(:title, :description, :date, :duration, :genre, :address, :time, :user_id)
     end
 end

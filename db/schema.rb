@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_07_212757) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_232252) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_212757) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "event_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["event_id"], name: "index_bookings_on_event_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -27,13 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_212757) do
     t.date "date"
     t.integer "duration"
     t.string "genre"
-    t.string "location"
+    t.string "address"
     t.string "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.bigint "booking_id", null: false
-    t.index ["booking_id"], name: "index_events_on_booking_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -47,11 +49,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_212757) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "events", "bookings"
-  add_foreign_key "events", "users"
+  add_foreign_key "bookings", "events"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "events", "users", on_delete: :cascade
 end

@@ -6,6 +6,10 @@ class EventPolicy < ApplicationPolicy
     end
   end
 
+  def my_events?
+    true
+  end
+
   def new?
     true
   end
