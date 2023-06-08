@@ -1,23 +1,25 @@
-<%= link_to events_path, class: "justify-content-start p-2 bd-highlight btn btn-secondary m-3" do %>
+<%= link_to events_path, class: "fs-4 text-white m-3" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
-<div class="container d-flex flex-column justify-content-center align-items-center text-center">
-  <p class="text-success display-4"><%= notice %></p>
-
-
+<div class="container">
   <div class="card-show">
-    <img src="https://picsum.photos/seed/picsum/400/400" class="rounded" style="border-radius: 15px !important; width: 300px; height: 300px;">
-   <%= render @event, class: "text-primary m-5" %>
+    <img src="https://picsum.photos/seed/picsum/400/400" class="">
   </div>
-
-  <div class="mt-3 container d-flex d-flex justify-content-around align-items-center text-center">
-  <% if policy(@event).edit? %>
-  <%= link_to edit_event_path(@event) do %>
-    <i i class="fa fa-pencil"></i>
-    <% end %>
-  <% end %>
-  <%= button_to @event, method: :delete, data: { confirm: "Are you sure?" } do %>
-  <i class="fa fa-trash"></i>
-  <% end %>
+      <button class="btn btn-primary my-5">Postulate Position</button>
+  <div class="row">
+    <div class="col-md-6 text-white fs-5 lh-lg d-flex justify-content-center">
+    <%= render @event %>
+      <% if policy(@event).edit? %>
+        <%= link_to edit_event_path(@event) do %>
+        <i i class="fa-regular fa-pen-to-square text-white"></i>
+        <% end %>
+        <%= button_to @event, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", style: "background-color: transparent; border-color: transparent;" do %>
+        <i class="fa-regular fa-trash-can text-white"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="rounded col-md-6">
+      <img src="https://pp.walk.sc/apartments/e/1/460x400/TX/Waco/Brookview.png" style="width: 100%">
+    </div>
   </div>
 </div>

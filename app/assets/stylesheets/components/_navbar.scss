@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgb(40, 3, 76);
+  background: #2A2A3F;
+  z-index: 9999;
 }
 
 .navbar-lewagon .nav-item {
@@ -12,7 +13,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 150px;
 }
 
 .navbar-nav li a {
@@ -32,3 +33,19 @@ button {
 color: white;
 }
 
+@media (max-width: 576px) {
+  .navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  .navbar-nav {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand-img {
+    display: none;
+  }
+}
