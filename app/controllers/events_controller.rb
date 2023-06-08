@@ -5,8 +5,9 @@ class EventsController < ApplicationController
   def my_events
     @user = current_user
     @applied_events = current_user.events
-    @created_events = current_user.bookings.includes(:event).map(&:event)
-    authorize @event
+    @created_events = current_user.created_events
+    authorize @created_events
+    authorize @applied_events
   end
 
   # GET /events
@@ -33,8 +34,8 @@ class EventsController < ApplicationController
   # POST /events
   def create
     @event = Event.new(event_params)
-    authorize @event
     @event.user = current_user
+    authorize @event
 
     if @event.save
       redirect_to @event, notice: "Event was successfully created."
@@ -68,6 +69,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:title, :description, :date, :duration, :genre, :address, :time, :user_id)
+      params.require(:event).permit(:title, :description, :datetime, :duration, :genre, :address, :user_id)
     end
 end
