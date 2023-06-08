@@ -13,6 +13,27 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = policy_scope(Event)
+    @events = Event.all
+    @events = @events.where(genre: params[:genre]) if params[:genre].present? && params[:genre] != "All"
+    @genres = %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir All]
+    @genre_icon_classes = {
+      "Rock" => "fa-solid fa-guitar",
+      "Pop" => "fa-solid fa-headset",
+      "Urban" => "fa-solid fa-building",
+      "DJ" => "fa-solid fa-compact-disc",
+      "Ballads" => "fa-solid fa-keyboard",
+      "Tropical" => "fa-solid fa-umbrella-beach",
+      "Regional" => "fa-solid fa-hat-cowboy",
+      "Country" => "fa-solid fa-cow",
+      "Instrumental" => "fa-solid fa-person-chalkboard",
+      "Choir" => "fa-solid fa-people-group",
+      "All" => "fa-solid fa-music"
+    }
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "events/events", locals: { events: @events }, formats: [:html] }
+    end
   end
 
   # GET /events/1
@@ -62,13 +83,20 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
+<<<<<<< HEAD
+  # Only allow a list of trusted parameters through.
+  def event_params
+    params.require(:event).permit(:title, :description, :date, :duration, :genre, :address, :time, :user_id)
+  end
+=======
     # Only allow a list of trusted parameters through.
     def event_params
       params.require(:event).permit(:title, :description, :datetime, :duration, :genre, :address, :user_id)
     end
+>>>>>>> master
 end
