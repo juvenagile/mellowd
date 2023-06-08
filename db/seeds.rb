@@ -1,4 +1,4 @@
-GENRE = %w[rock pop urban dance/dj ballads tropical regional country instrumental choir].freeze
+GENRE = %w[Rock Pop Urban Dance/DJ Ballads Tropical Regional Country Instrumental Choir].freeze
 
 all_user = []
 for i in 1..25 do
@@ -7,16 +7,18 @@ for i in 1..25 do
   all_user << user
 end
 
-
+all_event = []
 25.times do
-  Event.create(
+  event = Event.create(
     title: "Title #{rand(1..100)}",
     description: "Description #{rand(1..100)}",
     date: Date.today + rand(1..180),
     duration: rand(30..120),
     genre: GENRE.sample,
     user_id: all_user.sample.id,
-    address: ["New York", "Los Angeles", "Chicago", "Houston", "Philadelphia"].sample
+    address: ["New York", "Los Angeles", "Chicago", "Houston", "Philadelphia"].sample,
+    time: "#{rand(1..24)}:00"
   )
+  all_event << event
   puts 'Done'
 end
