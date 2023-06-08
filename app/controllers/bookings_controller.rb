@@ -13,15 +13,20 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.event = Event.find(params[:event_id])
-    @booking.user = current_user
-    authorize @booking
-    if @booking.save!
-      # Booking saved successfully
-      redirect_to event_booking_path(@booking.event, @booking), status: :see_other
+    @event = Event.find(params[:event_id])
+
+    if current_user.artist?
+      @booking.event = @event
+      @booking.user = current_user
+      authorize @booking
+
+      if @booking.save
+        redirect_to event_booking_path(@booking.event, @booking), status: :see_other, notice: 'Booking was successfully created.'
+      else
+        render :new
+      end
     else
-      # Booking failed to save
-      render :new
+      redirect_to @event, alert: 'Only artists can apply to events.'
     end
   end
 
