@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_venue, only: %i[new create edit update show]
+  before_action :set_event, only: %i[new create edit update show]
   before_action :set_booking, only: %i[show destroy]
 
   def show
