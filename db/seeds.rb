@@ -1,8 +1,13 @@
 GENRE = %w[rock pop urban dance/dj ballads tropical regional country instrumental choir].freeze
-user = User.create(email: "33@gmail.com" , password: "12345678", first_name: "Juan", last_name: "Diaz", admin: false)
-user_2 = User.create(email: "23@gmail.com" , password: "123456", first_name: "John", last_name: "Doe", admin: true)
 
-all_user = user, user_2
+all_user = []
+for i in 1..25 do
+  admin = i % 2 == 0 ? true : false
+  user = User.create(email: "user#{i}@example.com", password: "12345678", first_name: "First Name #{i}", last_name: "Last Name #{i}", admin: admin)
+  all_user << user
+end
+
+
 25.times do
   Event.create(
     title: "Title #{rand(1..100)}",
@@ -11,7 +16,7 @@ all_user = user, user_2
     duration: rand(30..120),
     genre: GENRE.sample,
     user_id: all_user.sample.id,
-    location: ["New York", "Los Angeles", "Chicago", "Houston", "Philadelphia"].sample
+    address: ["New York", "Los Angeles", "Chicago", "Houston", "Philadelphia"].sample
   )
   puts 'Done'
 end

@@ -1,10 +1,10 @@
-<%= link_to events_path, class: "justify-content-start p-2 bd-highlight btn btn-secondary m-3" do %>
+<%= link_to events_path, class: "fs-4 m-3 text-white" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
 <div class="container d-flex flex-column justify-content-center align-items-center text-center">
   <h1 class="display-4 text-white">New event</h1>
   <h3 class="text-white my-4">Tell us about your event</h3>
-  <p class="text-white">Let us know about the type of music you want for your event. <br> We’ll ask some information for the artists, like time, <br> duration and location for the show.</p>
+  <p class="text-white">Let us know about the type of music you want for your event. <br> We’ll ask some information for the artists, like time, <br> duration and address for the show.</p>
 
   <%= render "form", event: @event %>
   <br>
