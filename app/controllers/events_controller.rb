@@ -88,15 +88,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-<<<<<<< HEAD
-  # Only allow a list of trusted parameters through.
-  def event_params
-    params.require(:event).permit(:title, :description, :date, :duration, :genre, :address, :time, :user_id)
-  end
-=======
     # Only allow a list of trusted parameters through.
     def event_params
       params.require(:event).permit(:title, :description, :datetime, :duration, :genre, :address, :user_id)
     end
->>>>>>> master
 end
