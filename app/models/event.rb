@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   GENRE = %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir].freeze
+  has_one_attached :image
   has_many :bookings
   has_many :users, through: :bookings, source: :user
   belongs_to :user

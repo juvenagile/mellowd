@@ -3,7 +3,7 @@
       <div class="col mb-4">
         <%= link_to event, class: "text-decoration-none" do %>
           <div class="card">
-            <img src="https://picsum.photos/seed/picsum/200/200" class="rounded" style="border-radius: 15px !important;">
+            <%= image_tag url_for(event.image), class: "rounded", style: "border-radius: 15px !important;" %>
             <h5 style="margin-top: 10px; margin-left: 5px; margin-bottom: 10px;"><strong><%= event.title %></strong></h5>
             <p style="margin: 5px; color: #706F8F;"><strong>Duration:</strong> <%= event.duration %></p>
             <p style="margin: 5px; color: #706F8F;"><strong>Genre:</strong> <%= event.genre %></p>

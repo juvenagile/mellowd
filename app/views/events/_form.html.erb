@@ -7,7 +7,9 @@
     <%= f.input :genre, as: :select, collection: %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir], label: "Music genre" %>
     <%= f.input :description, label: "Description of the event" %>
     <%= f.input :address, label: "Event address" %>
-    <h4 class="my-3">Event details</h4>
+    <p class="my-3">Add image</p>
+    <%= f.file_field :photo, accept: 'image/jpeg,image/png,image', class: 'd-flex justify-content-between' %>
+    <h3 class="my-3">Event details</h3>
 <label>Date and time</label>
     <div class="row">
       <div class="col-12">

@@ -3,7 +3,7 @@ GENRE = %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choi
 User.destroy_all
 Event.destroy_all
 
-
+all_user = []
 25.times do |i|
   admin = i % 2 == 0 ? true : false
   user = User.create(email: "user#{i}@example.com", password: "12345678", first_name: "First Name #{i}", last_name: "Last Name #{i}", admin: admin)
