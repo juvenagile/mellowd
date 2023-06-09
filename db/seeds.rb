@@ -18,7 +18,7 @@ end
     duration: rand(30..120),
     genre: GENRE.sample,
     user_id: all_user.sample.id,
-    address: ["350 Fifth Ave, New York, NY 10118, USA", "Los Angeles: 6801 Hollywood Blvd, Los Angeles, CA 90028, USA", "Chicago: 233 S Wacker Dr, Chicago, IL 60606, USA", "Houston: 1600 Lamar St, Houston, TX 77010, USA", "Philadelphia: 1 Citizens Bank Way, Philadelphia, PA 19148, USA"].sample
+    address: ["350 Fifth Ave, New York, NY 10118, USA", "6801 Hollywood Blvd, Los Angeles, CA 90028, USA", "233 S Wacker Dr, Chicago, IL 60606, USA", "1600 Lamar St, Houston, TX 77010, USA", "1 Citizens Bank Way, Philadelphia, PA 19148, USA"].sample
   )
   event.save!
   puts 'Done'

@@ -1,4 +1,14 @@
 <div id="events" class="container" data-controller="event">
+  <div data-controller="hide-stuff">
+    <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-hide-stuff-target="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+    <button data-action="click->hide-stuff#toggleMap">Map</button>
+  </div>
+
   <div class="d-flex justify-content-between pt-2 overflow-auto m-3 border-white border-bottom">
     <% @genres.each do |genre| %>
     <div class="text-center">

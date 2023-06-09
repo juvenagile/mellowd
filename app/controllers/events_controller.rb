@@ -15,14 +15,6 @@ class EventsController < ApplicationController
     @events = policy_scope(Event)
     @events = Event.all
 
-    @markers = @events.geocoded.map do |event|
-      {
-        lat: event.latitude,
-        lng: event.longitude,
-        info_window_html:
-    render_to_string(partial: "info_window", locals: {event: event})
-      }
-
     @events = @events.where(genre: params[:genre]) if params[:genre].present? && params[:genre] != "All"
     @genres = %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir All]
     @genre_icon_classes = {
@@ -39,6 +31,13 @@ class EventsController < ApplicationController
       "All" => "fa-solid fa-music"
     }
 
+    @markers = @events.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
+
     respond_to do |format|
       format.html
       format.text { render partial: "events/events", locals: { events: @events }, formats: [:html] }
@@ -48,6 +47,10 @@ class EventsController < ApplicationController
   # GET /events/1
   def show
     authorize @event
+
+    if @event.geocoded?
+      @marker = [{lat: @event.latitude, lng: @event.longitude}]
+    end
   end
 
   # GET /events/new
