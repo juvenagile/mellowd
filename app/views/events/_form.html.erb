@@ -6,11 +6,14 @@
     <%= f.input :title, label: "Event title" %>
     <%= f.input :genre, as: :select, collection: %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir], label: "Music genre" %>
     <%= f.input :description, label: "Description of the event" %>
-    <%= f.input :address, label: "Event address" %>
+    <%= f.input :address, label: "Event address",
+      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+      wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+    %>
     <p class="my-3">Add image</p>
     <%= f.file_field :photo, accept: 'image/jpeg,image/png,image', class: 'd-flex justify-content-between' %>
     <h3 class="my-3">Event details</h3>
-<label>Date and time</label>
+      <label>Date and time</label>
     <div class="row">
       <div class="col-12">
         <%= f.input :datetime, as: :datetime, label: false, html5: true %>
