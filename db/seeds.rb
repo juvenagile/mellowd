@@ -4,13 +4,13 @@ User.destroy_all
 Event.destroy_all
 
 all_user = []
-25.times do |i|
+10.times do |i|
   admin = i % 2 == 0 ? true : false
   user = User.create(email: "user#{i}@example.com", password: "12345678", first_name: "First Name #{i}", last_name: "Last Name #{i}", admin: admin)
   all_user << user
 end
 
-25.times do
+10.times do
   event = Event.new(
     title: "Title #{rand(1..100)}",
     description: "Description #{rand(1..100)}",
