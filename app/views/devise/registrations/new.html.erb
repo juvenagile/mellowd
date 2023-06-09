@@ -27,10 +27,11 @@
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
+          <%= f.input :artist, as: :boolean, label: "Are you an artist? Click here", wrapper_html: { class: "fs-5 my-4" } %>
         </div>
 
         <div class="row form-actions text-center">
-          <%= f.button :submit, "Sign up", class: "btn btn-primary btn-lg btn-block my-3" %>
+          <%= f.button :submit, "Sign up", class: "btn btn-primary btn-lg btn-block mb-3" %>
           <%= render "devise/shared/links" %>
         </div>
       <% end %>

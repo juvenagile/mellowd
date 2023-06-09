@@ -1,19 +1,14 @@
 <div id="events" class="container" data-controller="event">
   <div class="d-flex justify-content-between pt-2 overflow-auto m-3 border-white border-bottom">
     <% @genres.each do |genre| %>
-    <div class="text-center">
-        <%= link_to events_path(genre: genre), class: "text-decoration-none text-white lh-lg icon-link #{genre}", data: { action: "click->event#chooseGenre", genre: genre } do %>
-          <i data-genre="<%= genre %>" class="<%= @genre_icon_classes[genre] %>" style="font-size: 30px;"></i>
-          <p data-genre="<%= genre %>"><%= genre %></p>
-        <% end %>
-    </div>
-    <% end %>
-    <% if @genres.count <= 1 %>
-      <h2><%= link_to "All the genres", events_path, class: "m-1 btn btn-warning btn-sm" %></h2>
+      <%= link_to events_path(genre: genre), class: "text-decoration-none text-white lh-lg icon-link #{genre}", data: { action: "click->event#chooseGenre", genre: genre } do %>
+        <p data-genre="<%= genre %>"><%= genre %></p>
+        <i data-genre="<%= genre %>" class="<%= @genre_icon_classes[genre] %>" style="font-size: 30px;"></i>
+      <% end %>
     <% end %>
   </div>
   <%= render "events", events: @events %>
 </div>
-<div style="position: fixed; top: 80px; right: 20px;">
+<div style="position: fixed; bottom: 20px; right: 20px;">
   <%= link_to "+", new_event_path, class: "text-xl rounded-circle btn btn-primary btn-lg" if policy(Event).new? %>
 </div>

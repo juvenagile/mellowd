@@ -1,17 +1,18 @@
-<h2>Events I Applied To:</h2>
-<% @applied_events.each do |event| %>
-  <div class="event">
-    <h3><%= event.title %></h3>
-    <p>Description: <%= event.description %></p>
-    <!-- Display other event details as needed -->
+<div class="container">
+  <h2 class="text-white my-4">Events I Created:</h2>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4" data-event-target="events">
+    <% @created_events.each do |event| %>
+      <div class="col mb-4">
+        <%= link_to event, class: "text-decoration-none" do %>
+          <div class="card">
+            <img src="https://picsum.photos/seed/picsum/200/200" class="rounded" style="border-radius: 15px !important;">
+            <h5 style="margin-top: 10px; margin-left: 5px; margin-bottom: 10px;"><strong><%= event.title %></strong></h5>
+            <p style="margin: 5px; color: #706F8F;"><strong>Duration:</strong> <%= event.duration %> min</p>
+            <p style="margin: 5px; color: #706F8F;"><strong>Description::</strong> <%= event.description %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 
-<h2>Events I Created:</h2>
-<% @created_events.each do |event| %>
-  <div class="event">
-    <h3><%= event.title %></h3>
-    <p>Description: <%= event.description %></p>
-    <!-- Display other event details as needed -->
-  </div>
-<% end %>
