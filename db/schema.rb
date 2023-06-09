@@ -31,16 +31,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_232252) do
     t.date "date"
     t.integer "duration"
     t.string "genre"
-    t.string "address"
     t.string "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.bigint "booking_id", null: false
     t.float "latitude"
     t.float "longitude"
     t.string "address"
-    t.index ["booking_id"], name: "index_events_on_booking_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 

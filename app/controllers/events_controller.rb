@@ -11,7 +11,14 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = policy_scope(Event)
+    @events = Events.all
+    @markers = @events.geocoded.map doo |event|
+    {
+      lat: event.latitude,
+      lng: event.longitude,
+      info_window_html:
+  render_to_string(partial: "info_window", locals: {event: event})
+    }
   end
 
   # GET /events/1
