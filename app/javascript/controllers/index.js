@@ -10,5 +10,8 @@ application.register("event", EventController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import HideStuffController from "./hide_stuff_controller"
+application.register("hide-stuff", HideStuffController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
