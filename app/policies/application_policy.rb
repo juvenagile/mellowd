@@ -8,6 +8,14 @@ class ApplicationPolicy
     @record = record
   end
 
+  def my_bookings?
+    true
+  end
+
+  def my_events?
+    true
+  end
+
   def index?
     false
   end
