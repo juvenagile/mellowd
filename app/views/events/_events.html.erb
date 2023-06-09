@@ -1,9 +1,14 @@
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4" data-event-target="events">
-    <% events.each do |event| %>
+  <% events.each do |event| %>
+    <% if event && event.persisted? %>
       <div class="col mb-4">
         <%= link_to event, class: "text-decoration-none" do %>
           <div class="card">
-            <%= image_tag url_for(@event.photo), class: "rounded", style: "border-radius: 15px !important;" %>
+            <% if event.photo.attached?%>
+              <%= image_tag url_for(event.photo), class: "rounded", style: "border-radius: 15px !important;" %>
+            <% else %>
+              <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
+            <% end %>
             <h5 style="margin-top: 10px; margin-left: 5px; margin-bottom: 10px;"><strong><%= event.title %></strong></h5>
             <p style="margin: 5px; color: #706F8F;"><strong>Duration:</strong> <%= event.duration %></p>
             <p style="margin: 5px; color: #706F8F;"><strong>Genre:</strong> <%= event.genre %></p>
@@ -11,4 +16,5 @@
         <% end %>
       </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
