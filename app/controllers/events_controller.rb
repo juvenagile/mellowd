@@ -39,6 +39,13 @@ class EventsController < ApplicationController
       "All" => "fa-solid fa-music"
     }
 
+    @markers = @events.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
+
     respond_to do |format|
       format.html
       format.text { render partial: "events/events", locals: { events: @events }, formats: [:html] }
@@ -49,6 +56,10 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     authorize @event
+
+    if @event.geocoded?
+      @marker = [{lat: @event.latitude, lng: @event.longitude}]
+    end
   end
 
   # GET /events/new
@@ -101,6 +112,6 @@ class EventsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def event_params
-    params.require(:event).permit(:title, :description, :datetime, :duration, :genre, :address, :user_id, :image)
+    params.require(:event).permit(:title, :description, :datetime, :duration, :genre, :address, :user_id, :photo)
   end
 end
