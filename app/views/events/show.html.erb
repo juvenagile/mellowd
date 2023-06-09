@@ -1,23 +1,31 @@
 <%= link_to events_path, class: "fs-4 text-white m-3" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
+
 <div class="container">
   <div class="card-show">
     <%= image_tag url_for(@event.image)%>
   </div>
-      <button class="btn btn-primary my-5">Postulate Position</button>
+
+  <button class="btn btn-primary my-5">Postulate Position</button>
+
   <div class="row">
     <div class="col-md-6 text-white fs-5 lh-lg d-flex justify-content-center">
-    <%= render @event %>
+      <%= render @event %>
+
       <% if policy(@event).edit? %>
         <%= link_to edit_event_path(@event) do %>
-        <i i class="fa-regular fa-pen-to-square text-white"></i>
+          <i class="fa-regular fa-pen-to-square text-white"></i>
         <% end %>
+      <% end %>
+
+      <% if policy(@event).destroy? %>
         <%= button_to @event, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", style: "background-color: transparent; border-color: transparent;" do %>
-        <i class="fa-regular fa-trash-can text-white"></i>
+          <i class="fa-regular fa-trash-can text-white"></i>
         <% end %>
       <% end %>
     </div>
+
     <div class="rounded col-md-6">
       <img src="https://pp.walk.sc/apartments/e/1/460x400/TX/Waco/Brookview.png" style="width: 100%">
     </div>

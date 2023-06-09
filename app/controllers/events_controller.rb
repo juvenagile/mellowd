@@ -15,14 +15,13 @@ class EventsController < ApplicationController
     @events = policy_scope(Event)
     @events = Event.all
 
-    # @markers = @events.geocoded.map do |event|
-    #   {
-    #     lat: event.latitude,
-    #     lng: event.longitude,
-    #     info_window_html:
-    # render_to_string(partial: "info_window", locals: { event: event })
-    #   }
-    # end
+    @markers = @events.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        info_window_html:
+    render_to_string(partial: "info_window", locals: {event: event})
+      }
 
     @events = @events.where(genre: params[:genre]) if params[:genre].present? && params[:genre] != "All"
     @genres = %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir All]
@@ -102,6 +101,6 @@ class EventsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def event_params
-    params.require(:event).permit(:title, :description, :datetime, :duration, :genre, :address, :user_id, :photo)
+    params.require(:event).permit(:title, :description, :datetime, :duration, :genre, :address, :user_id, :image)
   end
 end
