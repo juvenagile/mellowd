@@ -5,7 +5,11 @@
       <div class="col mb-4">
         <%= link_to event, class: "text-decoration-none" do %>
           <div class="card">
-            <img src="https://picsum.photos/seed/picsum/200/200" class="rounded" style="border-radius: 15px !important;">
+              <% if event.photo.attached?%>
+                <%= image_tag url_for(event.photo)%>
+              <% else %>
+                <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
+              <% end %>
             <h5 style="margin-top: 10px; margin-left: 5px; margin-bottom: 10px;"><strong><%= event.title %></strong></h5>
             <p style="margin: 5px; color: #706F8F;"><strong>Duration:</strong> <%= event.duration %> min</p>
             <p style="margin: 5px; color: #706F8F;"><strong>Description::</strong> <%= event.description %></p>

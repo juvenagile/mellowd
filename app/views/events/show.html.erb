@@ -4,7 +4,11 @@
 
 <div class="container">
   <div class="card-show">
-    <%= image_tag url_for(@event.image)%>
+  <% if @event.photo.attached?%>
+    <%= image_tag url_for(@event.photo)%>
+  <% else %>
+    <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
+  <% end %>
   </div>
 
   <button class="btn btn-primary my-5">Postulate Position</button>
