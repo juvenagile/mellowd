@@ -22,7 +22,6 @@ class EventsController < ApplicationController
     #     info_window_html:
     # render_to_string(partial: "info_window", locals: {event: event})
     #   }
-    # end
 
     @events = @events.where(genre: params[:genre]) if params[:genre].present? && params[:genre] != "All"
     @genres = %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir All]
@@ -48,6 +47,7 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
+    @event = Event.find(params[:id])
     authorize @event
   end
 
@@ -93,13 +93,14 @@ class EventsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
   end
 
-    # Only allow a list of trusted parameters through.
-    def event_params
-      params.require(:event).permit(:title, :description, :datetime, :duration, :genre, :address, :user_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def event_params
+    params.require(:event).permit(:title, :description, :datetime, :duration, :genre, :address, :user_id, :image)
+  end
 end
