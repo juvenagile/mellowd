@@ -9,4 +9,6 @@ class Event < ApplicationRecord
   validates :duration, presence: true, numericality: { greater_than: 29 }
   validates :genre, presence: true, inclusion: { in: %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir] }
   validates :address, presence: true
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
