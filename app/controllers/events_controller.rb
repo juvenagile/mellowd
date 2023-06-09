@@ -15,13 +15,14 @@ class EventsController < ApplicationController
     @events = policy_scope(Event)
     @events = Event.all
 
-    @markers = @events.geocoded.map do |event|
-      {
-        lat: event.latitude,
-        lng: event.longitude,
-        info_window_html:
-    render_to_string(partial: "info_window", locals: {event: event})
-      }
+    # @markers = @events.geocoded.map do |event|
+    #   {
+    #     lat: event.latitude,
+    #     lng: event.longitude,
+    #     info_window_html:
+    # render_to_string(partial: "info_window", locals: {event: event})
+    #   }
+    # end
 
     @events = @events.where(genre: params[:genre]) if params[:genre].present? && params[:genre] != "All"
     @genres = %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir All]
