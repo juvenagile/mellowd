@@ -4,10 +4,10 @@
 
 <div class="container">
   <div class="card-show">
-    <%= image_tag url_for(@event.image)%>
+    <%= image_tag url_for(@event.photo)%>
   </div>
 
-  <button class="btn btn-primary my-5">Postulate Position</button>
+  <%= link_to "Postulate Position", new_event_booking_path(@event), class: "btn btn-primary my-5" %>
 
   <div class="row">
     <div class="col-md-6 text-white fs-5 lh-lg d-flex justify-content-center">
