@@ -1,14 +1,29 @@
-<div id="events" class="container" data-controller="event">
-  <div class="d-flex justify-content-between pt-2 overflow-auto m-3 border-white border-bottom">
-    <% @genres.each do |genre| %>
-      <%= link_to events_path(genre: genre), class: "text-decoration-none text-white lh-lg icon-link #{genre}", data: { action: "click->event#chooseGenre", genre: genre } do %>
-        <p data-genre="<%= genre %>"><%= genre %></p>
-        <i data-genre="<%= genre %>" class="<%= @genre_icon_classes[genre] %>" style="font-size: 30px;"></i>
-      <% end %>
-    <% end %>
+<div  data-controller="event">
+  <div class="nav-container">
+    <div class="container edit-text">
+      <h1 class='text-white'>Browse Events</h1>
+      <h5 class='text-white my-4'>Find events near to you and apply to perform in if you are an artist.</h5>
+      <div class="d-flex justify-content-between pt-2 overflow-auto m-3">
+        <% @genres.each do |genre| %>
+          <%= link_to events_path(genre: genre), class: "text-decoration-none text-secondary lh-lg icon-link #{genre}", data: { action: "click->event#chooseGenre", genre: genre } do %>
+            <i data-genre="<%= genre %>" class="<%= @genre_icon_classes[genre] %>" style="font-size: 20px;"></i>
+            <p data-genre="<%= genre %>"><%= genre %></p>
+          <% end %>
+        <% end %>
+            <%= link_to "Create new event", new_event_path, class: "btn btn-primary m-3" if policy(Event).new? %>
+      </div>
+    </div>
   </div>
-  <%= render "events", events: @events %>
-</div>
-<div style="position: fixed; bottom: 20px; right: 20px;">
-  <%= link_to "+", new_event_path, class: "text-xl rounded-circle btn btn-primary btn-lg" if policy(Event).new? %>
+  <div id="events" class="container">
+    <%= render "events", events: @events %>
+      <div data-controller="hide-stuff">
+      <div style="width: 100%; height: 600px; border-radius: 15px;"
+      data-controller="map"
+      data-hide-stuff-target="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+      <button data-action="click->hide-stuff#toggleMap">Map</button>
+    </div>
+  </div>
 </div>
