@@ -1,8 +1,9 @@
 <h2 class="text-white">Events I Applied To:</h2>
-<% @my_bookings.each do |event| %>
+
+<% @my_bookings.each do |booking| %>
   <div class="event">
-    <h3><%= event.title %></h3>
-    <p>Description: <%= event.description %></p>
+    <h3><%= booking.event.title %></h3>
+    <p>Description: <%= booking.event.description %></p>
     <!-- Display other event details as needed -->
   </div>
 <% end %>
@@ -12,12 +13,10 @@
     <% @my_bookings.each do |booking| %>
       <div class="col-lg-3 my-3">
         <div class="card" style="width: 18rem; height: 22rem;">
-          <img src="<%= booking.event.img_url %>" class="card-img-top" alt="Listing Image">
           <div class="card-body position-relative">
             <h5 class="card-title"><%= booking.event.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted"></h6>
-            <p class="card-text position-absolute bottom-0 start-2 fw-bold"><%= ((booking.end_date - booking.start_date).to_i * booking.event.daily_rate).to_f %>€</p>
-            <%= link_to "Details", event_booking_path(booking.event, booking), class: "btn btn-outline-dark position-absolute bottom-0 end-0 m-2" %>
+            <%= link_to "Details", event_path(booking.event), class: "btn btn-outline-dark position-absolute bottom-0 end-0 m-2" %>
           </div>
         </div>
       </div>

@@ -6,24 +6,23 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
-  def new
+  def create
     @booking = Booking.new
     authorize @booking
-  end
-
-  def create
-    @booking = Booking.new(booking_params)
-    @event = Event.find(params[:event_id])
 
     if current_user.artist?
-      @booking.event = @event
+      @event = Event.find(params[:event_id])
       @booking.user = current_user
-      authorize @booking
+      @booking.event = @event
+
+      @booking.date = @event.datetime.to_date
+      @booking.status = true
 
       if @booking.save
-        redirect_to event_booking_path(@booking.event, @booking), status: :see_other, notice: 'Booking was successfully created.'
+
+        redirect_to my_bookings_path(@booking.event, @booking), status: :see_other, notice: 'Booking was successfully created.'
       else
-        render :new
+        redirect_to event_path(@event), alert: "Something went wrong"
       end
     else
       redirect_to @event, alert: 'Only artists can apply to events.'

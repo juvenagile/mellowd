@@ -11,7 +11,11 @@
   <% end %>
   </div>
 
-  <%= link_to "Postulate Position", new_event_booking_path(@event), class: "btn btn-primary my-5" %>
+  <% if current_user.artist %>
+    <%= link_to event_bookings_path(@event), data: { turbo_method: :post } do %>
+      <p>Postulate position</p>
+    <% end%>
+  <% end %>
 
   <div class="row">
     <div class="col-md-6 text-white fs-5 lh-lg d-flex justify-content-center">
