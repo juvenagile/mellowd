@@ -1,14 +1,5 @@
-<h2 class="text-white">Events I Applied To:</h2>
-
-<% @my_bookings.each do |booking| %>
-  <div class="event">
-    <h3><%= booking.event.title %></h3>
-    <p>Description: <%= booking.event.description %></p>
-    <!-- Display other event details as needed -->
-  </div>
-<% end %>
-
 <div class="container mx-auto mt-4">
+<h2 class="text-white">Events I Applied To:</h2>
   <div class="row">
     <% @my_bookings.each do |booking| %>
       <div class="col-lg-3 my-3">
