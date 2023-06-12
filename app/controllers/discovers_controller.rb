@@ -1,8 +1,8 @@
 class DiscoversController < ApplicationController
-  # before_action :set_discover, only: %i[show edit update destroy]
+  before_action :set_discover, only: %i[show edit destroy]
 
   def index
-    # @discovers = policy_scope(Discover)
+    @discovers = policy_scope(Discover)
     @discovers = Discover.all
   end
 
