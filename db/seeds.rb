@@ -1,20 +1,34 @@
 GENRE = %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir].freeze
+titles = ["The Future of AI", "Exploring the Deep Sea", "The Power of Renewable Energy", "The Art of Mindfulness", "The Science of Nutrition", "The History of Space Exploration", "The Future of Transportation", "The Power of Positive Thinking", "The Wonders of Nature", "The Evolution of Technology"]
+descriptions = ["An in-depth look at the advancements and potential of artificial intelligence.",
+  "A journey into the depths of the ocean and the discoveries that await us.",
+  "An examination of the benefits and challenges of transitioning to renewable energy sources.",
+  "A guide to incorporating mindfulness practices into daily life for improved well-being.",
+  "An exploration of the latest research on nutrition and its impact on health.",
+  "A retrospective on humanity's journey to explore the cosmos.",
+  "A look at the innovations and developments shaping the future of transportation.",
+  "An examination of the benefits and techniques of positive thinking for improved mental health.",
+  "A celebration of the beauty and diversity of the natural world.",
+  "A history of technological advancements and their impact on society."]
+datetimes = ["2023-06-11 09:00", "2023-06-12 14:00", "2023-06-13 16:00", "2023-06-14 18:00", "2023-06-15 10:00", "2023-06-16 12:00", "2023-06-17 15:00", "2023-06-18 17:00", "2023-06-19 19:00", "2023-06-20 11:00"]
+
 
 User.destroy_all
 Event.destroy_all
 
 all_user = []
-25.times do |i|
+10.times do |i|
   admin = i % 2 == 0 ? true : false
   user = User.create(email: "user#{i}@example.com", password: "12345678", first_name: "First Name #{i}", last_name: "Last Name #{i}", admin: admin)
   all_user << user
 end
 
-25.times do
+10.times do
+  index = rand(0...titles.length)
   event = Event.new(
-    title: "Title #{rand(1..100)}",
-    description: "Description #{rand(1..100)}",
-    datetime: Date.today + rand(1..180),
+    title: titles[index],
+    description: descriptions[index],
+    datetime: datetimes.sample,
     duration: rand(30..120),
     genre: GENRE.sample,
     user_id: all_user.sample.id,
