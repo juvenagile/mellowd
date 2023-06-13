@@ -16,6 +16,7 @@ datetimes = ["2023-06-11 09:00", "2023-06-12 14:00", "2023-06-13 16:00", "2023-0
 User.destroy_all
 Event.destroy_all
 Discover.destroy_all
+Dashboard.destroy_all
 
 all_user = []
 10.times do |i|
@@ -36,23 +37,40 @@ end
     address: ["350 Fifth Ave, New York, NY 10118, USA", "6801 Hollywood Blvd, Los Angeles, CA 90028, USA", "233 S Wacker Dr, Chicago, IL 60606, USA", "1600 Lamar St, Houston, TX 77010, USA", "1 Citizens Bank Way, Philadelphia, PA 19148, USA"].sample
   )
   event.save!
-  puts 'Done'
+  puts 'Event created'
 end
 
 titles = ["Discover 1", "Discover 2", "Discover 3", "Discover 4", "Discover 5"]
 contents = ["Content 1", "Content 2", "Content 3", "Content 4", "Content 5"]
 
 10.times do
-  Discover.new(
+  discover = Discover.new(
     title: titles.sample,
     content: contents.sample,
     likes: rand(0..100),
     plays: rand(0..100),
-    save: [true, false].sample,
+    saved: [true, false].sample,
     start_time: rand(1.0..10.0).round(2),
     end_time: rand(10.0..20.0).round(2),
     user_id: all_user.sample.id
   )
   discover.save!
-  puts 'Done'
+  puts 'Discover created'
+end
+
+10.times do |i|
+  Dashboard.create(
+    artist_genre: "Genre #{i+1}",
+    solo_or_band: [true, false].sample,
+    artist_count: rand(1..10),
+    artist_name: "Artist #{i+1}",
+    artist_instrument: "Instrument #{i+1}",
+    artist_location: "City #{i+1}",
+    artist_travel: [true, false].sample,
+    artist_radius: rand(10..100),
+    artist_cities: "City #{rand(1..10)}, City #{rand(1..10)}",
+    artist_description: "Artist Description #{i+1}",
+    artist_price: rand(50..500)
+  )
+  puts 'Dashboard created'
 end
