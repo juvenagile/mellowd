@@ -14,6 +14,6 @@
   </div>
 </div>
 
-<%= turbo_frame_tag "events" do %>
+<%= turbo_frame_tag "events", target: "_top" do %>
     <%= render "events", events: @events, markers: @markers %>
 <% end %>
