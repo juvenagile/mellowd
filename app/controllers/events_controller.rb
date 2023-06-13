@@ -15,16 +15,17 @@ class EventsController < ApplicationController
     @events = policy_scope(Event)
     @events = Event.all
 
-    # @markers = @events.geocoded.map do |event|
-    #   {
-    #     lat: event.latitude,
-    #     lng: event.longitude,
-    #     info_window_html:
-    # render_to_string(partial: "info_window", locals: { event: event })
-    #   }
-    # end
 
     @events = @events.where(genre: params[:genre]) if params[:genre].present? && params[:genre] != "All"
+    
+    @markers = @events.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { event: event })
+      }
+    end
+    
     @genres = %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir All]
     @genre_icon_classes = {
       "Rock" => "fa-solid fa-guitar",
@@ -39,17 +40,8 @@ class EventsController < ApplicationController
       "Choir" => "fa-solid fa-people-group",
       "All" => "fa-solid fa-music"
     }
-
-    @markers = @events.geocoded.map do |flat|
-      {
-        lat: flat.latitude,
-        lng: flat.longitude
-      }
-    end
-
-    respond_to do |format|
-      format.html
-      format.text { render partial: "events/events", locals: { events: @events }, formats: [:html] }
+    if params[:genre].present? && params[:genre] != "All"
+      render turbo_stream: turbo_stream.update("events", partial: "events", locals: { events: @events, markers: @markers })
     end
   end
 

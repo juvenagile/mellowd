@@ -1,0 +1,54 @@
+<% if user_signed_in? %>
+  <footer class="bg-dark text-white p-5 mt-5">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-4">
+            <img src="https://res.cloudinary.com/durk9nkxa/image/upload/v1686351213/mELLOW_d_mtssdn.png" width="200">
+          <div class="mt-4">
+          <p>Get inspired with events</p>
+          <p>Join our community</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 d-flex flex-column">
+          <h4>Explore</h4>
+          <a class="text-white" href="#">Events</a>
+          <a class="text-white" href="my_events">My Events</a>
+          <a class="text-white" href="my_bookings">My Bookings</a>
+        </div>
+
+        <div class="col-md-4">
+          <h4 class="text-purple">Join Our Weekly Digest</h4>
+          <p>Get exclusive promotions & updates straight to your inbox</p>
+          <!-- Add your input fields for the newsletter subscription here -->
+
+          <form action="/" method="GET">
+            <div class="d-flex position-relative">
+              <input id="email" name="email" type="email" class="email-input" placeholder="Enter your email">
+              <button class="btn btn-primary sub-btn" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-12 text-center">
+          <div class="footer-links">
+            <a href="https://github.com/"><i class="fs-3 text-white text-decoration-none fab fa-github text-purple"></i></a>
+            <a href="https://www.youtube.com/"><i class="fs-3 text-white text-decoration-none fab fa-youtube text-purple"></i></a>
+            <a href="https://twitter.com/"><i class="fs-3 text-white text-decoration-none fab fa-twitter text-purple"></i></a>
+            <a href="https://www.instagram.com/"><i class="fs-3 text-white text-decoration-none fab fa-instagram text-purple"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-12 text-center">
+          <p class="text-purple">© MELLOW*D 2023</p>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+<% end %>
