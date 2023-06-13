@@ -20,8 +20,9 @@ class EventsController < ApplicationController
     #     lat: event.latitude,
     #     lng: event.longitude,
     #     info_window_html:
-    # render_to_string(partial: "info_window", locals: {event: event})
+    # render_to_string(partial: "info_window", locals: { event: event })
     #   }
+    # end
 
     @events = @events.where(genre: params[:genre]) if params[:genre].present? && params[:genre] != "All"
     @genres = %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir All]
