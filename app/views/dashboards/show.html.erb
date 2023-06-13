@@ -1,0 +1,35 @@
+<div class="text-center text-white">
+  <div class="position-relative">
+    <img src="https://via.placeholder.com/1200x300" alt="Cover photo" class="img-fluid w-100">
+    <div class="rounded bg-secondary p-5 dashboard-banner-logo">
+      Logo
+    </div>
+  </div>
+
+  <div class="container info">
+    <h1><%= @dashboard.artist_name %></h1>
+    <div class="d-flex justify-content-center">
+      <div class="mx-3">
+        <i class="fas fa-map-marker-alt"></i>
+        <p><%= @dashboard.artist_location %></p>
+      </div>
+      <div class="mx-3">
+        <i class="fas fa-users"></i>
+        <p><%= @dashboard.solo_or_band ? "Band" : "Solo" %></p>
+        <% if @dashboard.solo_or_band %>
+          <p><%= @dashboard.artist_count %></p>
+        <% end %>
+      </div>
+      <div class="mx-3">
+        <i class="fas fa-music"></i>
+        <p><%= @dashboard.artist_genre %></p>
+      </div>
+    </div>
+    <p>Artist Instrument: <%= @dashboard.artist_instrument %></p>
+    <p>Traveling Artist: <%= @dashboard.artist_travel ? "Yes" : "No" %></p>
+    <% if @dashboard.artist_travel %>
+      <p>Traveling Radius: <%= @dashboard.artist_radius %> miles</p>
+      <p>Traveling Cities: <%= @dashboard.artist_cities %></p>
+    <% end %>
+  </div>
+</div>
