@@ -1,0 +1,40 @@
+.discover-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: $card-padding;
+  gap: $card-gap;
+  border-radius: $card-border-radius;
+  position: relative;
+  height: 500px;
+  background: $blue-60-background;
+}
+
+.discover-card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 15px;
+  width: 360px;
+  height: 35px;
+}
+
+.discover-card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 15px;
+  width: 360px;
+  height: 35px;
+}
+
+.discover-card-title {
+  font-family: 'Readex Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-size: $font-size-l;
+}

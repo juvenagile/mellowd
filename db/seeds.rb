@@ -38,34 +38,16 @@ end
 titles = ["Discover 1", "Discover 2", "Discover 3", "Discover 4", "Discover 5"]
 contents = ["Content 1", "Content 2", "Content 3", "Content 4", "Content 5"]
 10.times do
-  Discover.new(
+  discover = Discover.new(
     title: titles.sample,
     content: contents.sample,
     likes: rand(0..100),
     plays: rand(0..100),
-    save: [true, false].sample,
+    saved: [true, false].sample,
     start_time: rand(1.0..10.0).round(2),
     end_time: rand(10.0..20.0).round(2),
     user_id: all_user.sample.id
   )
   discover.save!
   puts 'Content created'
-end
-
-titles = ["Discover 1", "Discover 2", "Discover 3", "Discover 4", "Discover 5"]
-contents = ["Content 1", "Content 2", "Content 3", "Content 4", "Content 5"]
-
-10.times do
-  Discover.new(
-    title: titles.sample,
-    content: contents.sample,
-    likes: rand(0..100),
-    plays: rand(0..100),
-    save: [true, false].sample,
-    start_time: rand(1.0..10.0).round(2),
-    end_time: rand(10.0..20.0).round(2),
-    user_id: all_user.sample.id
-  )
-  discover.save!
-  puts 'Done'
 end
