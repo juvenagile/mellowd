@@ -14,6 +14,8 @@ datetimes = ["2023-06-11 09:00", "2023-06-12 14:00", "2023-06-13 16:00", "2023-0
 User.destroy_all
 Event.destroy_all
 Discover.destroy_all
+Dashboard.destroy_all
+
 all_user = []
 10.times do |i|
   admin = i % 2 == 0 ? true : false
@@ -49,5 +51,22 @@ contents = ["Content 1", "Content 2", "Content 3", "Content 4", "Content 5"]
     user_id: all_user.sample.id
   )
   discover.save!
-  puts 'Content created'
+  puts 'Discover created'
+end
+
+10.times do |i|
+  Dashboard.create(
+    artist_genre: "Genre #{i+1}",
+    solo_or_band: [true, false].sample,
+    artist_count: rand(1..10),
+    artist_name: "Artist #{i+1}",
+    artist_instrument: "Instrument #{i+1}",
+    artist_location: "City #{i+1}",
+    artist_travel: [true, false].sample,
+    artist_radius: rand(10..100),
+    artist_cities: "City #{rand(1..10)}, City #{rand(1..10)}",
+    artist_description: "Artist Description #{i+1}",
+    artist_price: rand(50..500)
+  )
+  puts 'Dashboard created'
 end
