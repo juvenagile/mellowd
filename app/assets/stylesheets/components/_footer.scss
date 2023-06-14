@@ -1,3 +1,10 @@
+footer {
+  background-color: #2A2A3F;
+  color: white;
+  padding: 50px;
+  margin-top: 40px;
+}
+
 .btn-ghost {
   color: #4A4A4A;
   border: 1px solid #4A4A4A;
@@ -45,11 +52,16 @@ a:link {
   color: white;
 }
 
+.input-container {
+  position: relative;
+}
+
 .email-input {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   padding: 11px;
   font-family: Arial, sans-serif;
+  width: 70%;
 }
 
 .sub-btn {
@@ -57,5 +69,4 @@ a:link {
   padding: 12px;
   position: absolute;
   right: 40px;
-  top: 2px;
 }
