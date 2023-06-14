@@ -3,3 +3,17 @@
   width: 100%;
 }
 
+.icon-link {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  overflow: auto;
+  margin: 15px;
+}

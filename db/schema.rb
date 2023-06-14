@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_13_204145) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_14_181515) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_204145) do
     t.datetime "updated_at", null: false
     t.text "artist_description"
     t.decimal "artist_price", precision: 8, scale: 2
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_dashboards_on_user_id"
   end
 
   create_table "discovers", force: :cascade do |t|
@@ -127,6 +129,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_204145) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "events"
   add_foreign_key "bookings", "users"
+  add_foreign_key "dashboards", "users"
   add_foreign_key "discovers", "users"
   add_foreign_key "events", "users", on_delete: :cascade
   add_foreign_key "user_dashboards", "dashboards"
