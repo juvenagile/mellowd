@@ -5,25 +5,30 @@
 
   <div class="discover-card">
     <div class="discover-card-header">
-      <%= image_tag("profile-picture", size: "50x50", alt: "Edit Entry") %>
+      <%= image_tag("profile-picture", alt: "Edit Entry", class: "avatar") %>
 
-      <div class="p-5">
-        <h5 class="card-title">Title of the Song</h5>
-        <p class="artist-name">Artist Name</p>
+      <div>
+        <h5 class="discover-card-title">Title of the Song</h5>
+        <p class="discover-card-subtitle">Artist Name</p>
       </div>
 
-      <a href="#" class="btn">Hire Us</a>
+      <a href="#" class="btn btn-link" style="underline: none;">Hire Us</a>
     </div>
 
-    <div class="discover-card-image">
-      <%= image_tag("post-image.jpg", class: ") %>
-    </div>
+
+    <%= image_tag("post-image.jpg", class: "discover-card-image") %>
+
 
     <div class="discover-card-footer">
-        <p class="card-text">Plays: 100</p>
-        <p class="card-text">Likes: 50</p>
-        <button class="btn btn-primary">Save</button>
-        <button class="btn btn-primary">Share</button>
+      <div class="discover-card-footer-info">
+        <p style="margin: 0;">Plays: 100</p>
+        <p style="margin: 0;">Likes: 50</p>
       </div>
+
+      <div class="discover-card-footer-info">
+        <button class="btn btn-outline-primary button-primary-stroke">Save</button>
+        <button class="btn btn-outline-primary button-primary-stroke">Share</button>
+      </div>
+    </div>
   </div>
 </div>
