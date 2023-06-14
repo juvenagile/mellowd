@@ -2,7 +2,7 @@
   <div class="container edit-text">
     <h1 class='text-white'>Browse Events</h1>
     <h5 class='text-white my-4'>Find events near to you and apply to perform in if you are an artist.</h5>
-    <div class="d-flex justify-content-between pt-2 overflow-auto m-3">
+    <div class="bar">
       <% @genres.each do |genre| %>
         <%= link_to events_path(genre: genre), class: "text-decoration-none text-secondary lh-lg icon-link #{genre}" do %>
           <i data-genre="<%= genre %>" class="<%= @genre_icon_classes[genre] %>" style="font-size: 20px;"></i>

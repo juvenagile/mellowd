@@ -1,9 +1,7 @@
 <div class="text-center text-white">
-  <div class="position-relative">
-    <img src="https://via.placeholder.com/1200x300" alt="Cover photo" class="img-fluid w-100">
-    <div class="rounded bg-secondary p-5 dashboard-banner-logo">
-      Logo
-    </div>
+  <img src="https://th.bing.com/th/id/OIG.HYuQ2tVozTi_krzbh3Td?pid=ImgGn" alt="Cover photo" class="banner">
+  <div class="dashboard-banner-logo">
+    Logo
   </div>
 
   <div class="container info">
@@ -30,6 +28,14 @@
     <% if @dashboard.artist_travel %>
       <p>Traveling Radius: <%= @dashboard.artist_radius %> miles</p>
       <p>Traveling Cities: <%= @dashboard.artist_cities %></p>
+    <% end %>
+
+    <% if policy(@dashboard).edit? %>
+      <%= link_to "Edit Dashboard", edit_dashboard_path(@dashboard) %>
+    <% end %>
+
+    <% if policy(@dashboard).destroy? %>
+      <%= button_to "Delete Dashboard", @dashboard, method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
   </div>
 </div>

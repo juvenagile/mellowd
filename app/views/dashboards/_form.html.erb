@@ -1,0 +1,22 @@
+<%= simple_form_for(@dashboard) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs border border-light p-4 rounded mb-4">
+    <%= f.input :artist_genre, as: :select, collection: %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir], label: "Band genre" %>
+    <%= f.input :solo_or_band, label: "Are you a solo artist or a band?" %>
+    <%= f.input :artist_count, label: "Number of artist" %>
+    <%= f.input :artist_name, label: "Band Name" %>
+    <%= f.input :artist_instrument, label: "Instruments" %>
+    <%= f.input :artist_location, label: "Based in" %>
+    <%= f.input :artist_travel, label: "Are you a traveling artist?" %>
+    <%= f.input :artist_radius, label: "How far are you willing to travel?" %>
+    <%= f.input :artist_cities, label: "What cities would you travel to?" %>
+    <%= f.input :artist_description, label: "Give us a breff description of the band" %>
+    <%= f.input :artist_price, label: "How much do you charge the hour?" %>
+  </div>
+
+  <div class="form-actions btn btn-primary">
+    <%= f.button :submit, style: "color: white;" %>
+  </div>
+<% end %>
