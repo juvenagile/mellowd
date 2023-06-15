@@ -4,7 +4,7 @@
   align-items: center;
   padding: 0px;
   border-radius: $card-border-radius;
-  background-color: $background-blue-80;
+  background-color: $blue-80;
 }
 
 .discover-card-header {
@@ -26,7 +26,7 @@
   font-size: $font-size-l;
   line-height: 140%;
   text-transform: capitalize;
-  color: $text-white-100;
+  color: $neutral-100;
   margin: 0;
 }
 
@@ -36,7 +36,7 @@
   font-weight: 400;
   font-size: $font-size-m;
   line-height: 140%;
-  color: $text-white-80;
+  color: $neutral-100;
   margin: 0;
 }
 
@@ -71,5 +71,5 @@
 }
 
 .discover-card-footer-info > p {
-  color: $text-white-80;
+  color: $neutral-100;
 }

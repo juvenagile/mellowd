@@ -24,7 +24,7 @@
 .navbar-lewagon {
   display: flex;
   justify-content: space-around;
-  background: #2A2A3F;
+  background: $blue-60;
   z-index: 9999;
 }
 
@@ -68,18 +68,18 @@ color: white;
 }
 
 .profile{
-  color: $text-white-80;
+  color: $neutral-100;
   margin: 0;
   padding: 10px;
 }
 
 .nav-link{
-  color: $text-white-80;
+  color: $neutral-100;
 }
 
 
 .profileactive{
-  color: $text-white-100;
+  color: $neutral-100;
 }
 
 
