@@ -1,7 +1,43 @@
+.navbar-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.navbar-nav {
+  flex-direction: row;
+}
+
+.navbar-brand-img {
+  display: none;
+}
+.container-fluid{
+  display: none;
+}
+
 .navbar-lewagon {
-  justify-content: space-between;
+  display: flex;
+  justify-content: space-around;
   background: #2A2A3F;
   z-index: 9999;
+}
+
+.navbar1{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar-nav{
+  width: 100%;
+  justify-content: space-around;
 }
 
 .navbar-lewagon .nav-item {
@@ -17,10 +53,8 @@
 }
 
 .navbar-nav li a {
-  color: white;
   border-radius: 15px;
   padding: 10px;
-  margin-right: 10px;
   transition: border-radius 3.0s ease-in-out;
 }
 
@@ -33,19 +67,34 @@ button {
 color: white;
 }
 
-@media (max-width: 576px) {
-  .navbar {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-  .navbar-nav {
-    flex-direction: row;
-  }
+.profile{
+  color: $text-white-80;
+  margin: 0;
+  padding: 10px;
 }
 
-@media (max-width: 576px) {
-  .navbar-brand-img {
-    display: none;
+.nav-link{
+  color: $text-white-80;
+}
+
+
+.profileactive{
+  color: $text-white-100;
+}
+
+
+@media (min-width: 500px) {
+  .navbar {
+    position: relative;
+    top: 0;
+    width: 100%;
   }
+  .navbar-brand-img {
+    display: inline-block;
+  }
+  .container-fluid{
+    display: inline-block;
+  }
+
+
 }
