@@ -10,21 +10,22 @@
         <ul class="navbar-nav me-auto">
           <% if user_signed_in? %>
             <li class="navbar-item active">
-            <div class='remix-icons-container'>
-              <i class="ri-home-fill"></i>
-            </div>
+              <i class="ri-music-fill ri-xl"></i>
               <%= link_to "Discover", events_path, class: "nav-link" %>
             </li>
             <li class="navbar-item">
-            <%= image_tag("user-line", alt: "Edit Entry") %>
+              <i class="ri-ticket-2-line ri-xl"></i>
               <%= link_to "Events", my_events_path, class: "nav-link" %>
             </li>
             <li class="navbar-item">
-            <%= image_tag("user-line", alt: "Edit Entry") %>
+              <i class="ri-calendar-check-line ri-xl"></i>
               <%= link_to "Activity", my_bookings_path, class: "nav-link" %>
             </li>
             <li class="navbar-item dropdown">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <%= content_tag :i, "", class: "ri-user-fill ri-xl dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <p class='profile'>
+                 Profile
+                </p>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "My Profile", edit_user_registration_path, class: "dropdown-item text-dark" %>
                 <%= link_to "My Projects", "#", class: "dropdown-item text-dark" %>

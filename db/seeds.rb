@@ -66,7 +66,8 @@ end
     artist_radius: rand(10..100),
     artist_cities: "City #{rand(1..10)}, City #{rand(1..10)}",
     artist_description: "Artist Description #{i+1}",
-    artist_price: rand(50..500)
+    artist_price: rand(50..500),
+    user_id: all_user.sample.id
   )
   puts 'Dashboard created'
 end
