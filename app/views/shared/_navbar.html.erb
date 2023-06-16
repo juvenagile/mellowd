@@ -1,44 +1,35 @@
 <% if user_signed_in? %>
-  <!-- Navbar code here -->
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <div class="container-fluid">
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag("Mellow_d.png", alt: "logo", class: "navbar-brand-img", width: "100%") %>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <%= link_to root_path do %>
+        <%= image_tag('mellow-logo.svg', class: 'navbar-logo', alt: 'MellowD') %>
       <% end %>
-
-      <div class="navbar1">
-        <ul class="navbar-nav me-auto">
-          <% if user_signed_in? %>
-            <li class="navbar-item active">
-              <i class="ri-music-fill ri-xl"></i>
-              <%= link_to "Discover", events_path, class: "nav-link" %>
-            </li>
-            <li class="navbar-item">
-              <i class="ri-ticket-2-line ri-xl"></i>
-              <%= link_to "Events", my_events_path, class: "nav-link" %>
-            </li>
-            <li class="navbar-item">
-              <i class="ri-calendar-check-line ri-xl"></i>
-              <%= link_to "Activity", my_bookings_path, class: "nav-link" %>
-            </li>
-            <li class="navbar-item dropdown">
-                <%= content_tag :i, "", class: "ri-user-fill ri-xl dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                <p class='profile'>
-                 Profile
-                </p>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "My Profile", edit_user_registration_path, class: "dropdown-item text-dark" %>
-                <%= link_to "My Projects", "#", class: "dropdown-item text-dark" %>
-                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item text-dark" %>
-              </div>
-            </li>
-          <% else %>
-            <li class="nav-item"-->
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </li-->
-          <% end %>
-        </ul>
-      </div>
     </div>
-  </div>
+
+    <ul class="navbar-nav">
+      <li class="navbar-item">
+        <%= link_to root_path, class: "nav-link" do %>
+          <i class="ri-music-line ri-xl"></i> Discover
+        <% end %>
+      </li>
+
+      <li class="navbar-item">
+        <%= link_to my_events_path, class: "nav-link" do %>
+          <i class="ri-ticket-2-line ri-xl"></i> Events
+        <% end %>
+      </li>
+
+      <li class="navbar-item">
+        <%= link_to my_bookings_path, class: "nav-link" do %>
+          <i class="ri-calendar-check-line ri-xl"></i> Activity
+        <% end %>
+      </li>
+
+      <li class="navbar-item">
+        <%= link_to edit_user_registration_path, class: "nav-link" do %>
+          <i class="ri-user-line ri-xl"></i> Profile
+        <% end %>
+      </li>
+    </ul>
+  </nav>
 <% end %>

@@ -1,100 +1,59 @@
-.navbar-item{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .navbar {
   position: fixed;
   bottom: 0;
   width: 100%;
-}
-.navbar-nav {
-  flex-direction: row;
-}
-
-.navbar-brand-img {
-  display: none;
-}
-.container-fluid{
-  display: none;
-}
-
-.navbar-lewagon {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background: $blue-60;
   z-index: 9999;
 }
 
-.navbar1{
-  width: 100%;
+.navbar-item{
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.navbar-brand {
+  display: none;
 }
 
 .navbar-nav{
+  display: flex;
+  flex-direction: row;
   width: 100%;
   justify-content: space-around;
 }
 
-.navbar-lewagon .nav-item {
-  color: rgb(255, 255, 255);
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 150px;
-}
-
-.navbar-nav li a {
-  border-radius: 15px;
-  padding: 10px;
-  transition: border-radius 3.0s ease-in-out;
-}
-
-.navbar-nav li a:hover {
-  background-color: white;
-  border-radius: 15px;
-}
-
-button {
-color: white;
-}
-
-.profile{
-  color: $neutral-100;
-  margin: 0;
-  padding: 10px;
-}
-
 .nav-link{
-  color: $neutral-100;
+  color: $neutral-20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-
-.profileactive{
-  color: $neutral-100;
-}
-
-
-@media (min-width: 500px) {
+@media (min-width: 680px) {
   .navbar {
-    position: relative;
-    top: 0;
+    position: static;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 40px;
+  }
+
+  .navbar-nav {
+    width: auto;
+    gap: 40px;
+  }
+
+   .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-logo {
     width: 100%;
   }
-  .navbar-brand-img {
-    display: inline-block;
-  }
-  .container-fluid{
-    display: inline-block;
-  }
-
-
 }
