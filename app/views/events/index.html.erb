@@ -5,9 +5,9 @@
     <% if params[:query].blank?%>
     There are <%= pluralize @events.count, "event" %> events near you.</h5>
     <% end %>
-    <div class="bar">
+    <div class="bar" data-controller="genre">
       <% @genres.each do |genre| %>
-        <%= link_to events_path(genre: genre), class: "text-decoration-none text-secondary lh-lg icon-link #{genre}" do %>
+        <%= link_to events_path(genre: genre), class: "text-decoration-none text-secondary lh-lg icon-link #{genre}", data: {"genre-target": "genreButton", action: "click->genre#toggleColor" } do %>
           <i data-genre="<%= genre %>" class="<%= @genre_icon_classes[genre] %>" style="font-size: 20px;"></i>
           <p data-genre="<%= genre %>"><%= genre %></p>
         <% end %>

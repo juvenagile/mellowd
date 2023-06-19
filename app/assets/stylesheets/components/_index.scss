@@ -1,12 +1,15 @@
 // Import your components CSS files here.
-@import "alert";
-@import "avatar";
-@import "form_legend_clear";
-@import "navbar";
-@import "card";
-@import "link";
-@import "address_autocomplete";
-@import "index-nav-container";
-@import "dashboard";
-@import "map";
-@import "footer";
+@import "bootstrap/form_legend_clear";
+@import "main/alert";
+@import "main/avatar";
+@import "main/button";
+@import "main/tab";
+@import "shared/navbar";
+@import "shared/footer";
+@import "shared/form";
+@import "shared/genre-filter";
+@import "event/card";
+@import "event/map";
+@import "dashboard/dashboard";
+@import "discover/discover-card";
+@import "discover/discover"
