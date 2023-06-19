@@ -1,7 +1,10 @@
 <div class="nav-container">
   <div class="container edit-text">
     <h1 class='text-white'>Browse Events</h1>
-    <h5 class='text-white my-4'>Find events near to you and apply to perform in if you are an artist.</h5>
+    <h5 class='text-white my-4'>
+    <% if params[:query].blank?%>
+    There are <%= pluralize @events.count, "event" %> events near you.</h5>
+    <% end %>
     <div class="bar" data-controller="genre">
       <% @genres.each do |genre| %>
         <%= link_to events_path(genre: genre), class: "text-decoration-none text-secondary lh-lg icon-link #{genre}", data: {"genre-target": "genreButton", action: "click->genre#toggleColor" } do %>
