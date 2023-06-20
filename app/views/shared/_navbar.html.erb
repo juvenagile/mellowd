@@ -6,50 +6,15 @@
       <% end %>
     </div>
 
-      <div class="navbar1">
-        <ul class="navbar-nav me-auto">
-          <% if user_signed_in? %>
-            <li class="navbar-item active">
-              <i class="ri-music-fill ri-xl"></i>
-              <%= link_to "Discover", discovers_path, class: "nav-link" %>
-            </li>
-            <li class="navbar-item">
-              <i class="ri-ticket-2-line ri-xl"></i>
-              <%= link_to "Events", events_path, class: "nav-link" %>
-            </li>
-            <li class="navbar-item">
-              <i class="ri-calendar-check-line ri-xl"></i>
-              <%= link_to "Activity", my_bookings_path, class: "nav-link" %>
-            </li>
-            <li class="navbar-item dropdown">
-                <%= content_tag :i, "", class: "ri-user-fill ri-xl dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                <p class='profile'>
-                 Profile
-                </p>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "My Profile", edit_user_registration_path, class: "dropdown-item text-dark" %>
-                <%= link_to "My Projects", "#", class: "dropdown-item text-dark" %>
-                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item text-dark" %>
-              </div>
-            </li>
-          <% else %>
-            <li class="nav-item"-->
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </li-->
-          <% end %>
-        </ul>
-      </div>
-    </div>
-
     <ul class="navbar-nav">
       <li class="navbar-item">
-        <%= link_to root_path, class: "nav-link" do %>
+        <%= link_to discovers_path, class: "nav-link" do %>
           <i class="ri-music-line ri-xl"></i> Discover
         <% end %>
       </li>
 
       <li class="navbar-item">
-        <%= link_to my_events_path, class: "nav-link" do %>
+        <%= link_to events_path, class: "nav-link" do %>
           <i class="ri-ticket-2-line ri-xl"></i> Events
         <% end %>
       </li>
