@@ -24,7 +24,6 @@
   text-transform: capitalize;
   text-align: center;
   color: $neutral-100;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .discover-subtitle {
@@ -186,15 +185,13 @@
 
   .discover-container-headline {
       align-items: flex-start;
-  }
-
-  .discover-container-card {
-    align-items: flex-start;
+      width: 60%;
   }
 
   .discover-info {
       justify-content: start;
       gap: 100px;
+      width: 40%;
   }
 
   .discover-card {
