@@ -31,11 +31,18 @@
     <% end %>
 
     <% if policy(@dashboard).edit? %>
-      <%= link_to "Edit Dashboard", edit_dashboard_path(@dashboard) %>
+      <%= link_to edit_dashboard_path(@dashboard) do %>
+        <i class="fa-regular fa-pen-to-square text-white"></i>
+      <% end %>
     <% end %>
 
     <% if policy(@dashboard).destroy? %>
-      <%= button_to "Delete Dashboard", @dashboard, method: :delete, data: { confirm: "Are you sure?" } %>
+      <%= button_to @dashboard, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", style: "background-color: transparent; border-color: transparent;" do %>
+        <i class="fa-regular fa-trash-can text-white"></i>
+      <% end %>
     <% end %>
   </div>
+  <% if current_user.id != @dashboard.user.id %>
+    <%= link_to "Send message to artist", chatrooms_path(user_id: @dashboard.user), class: "btn btn-primary m-3", data: {turbo_method: :post} if policy(Event).new? %>
+  <% end %>
 </div>
