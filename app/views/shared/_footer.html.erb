@@ -1,42 +1,44 @@
 <% if user_signed_in? %>
   <footer>
+    <div class="footer-container">
+      <div class="footer-brand-container">
+        <%= link_to root_path do %>
+          <%= image_tag('mellow-logo.svg', alt: 'MellowD') %>
+        <% end %>
 
-    <div class="section col-md-4">
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag('mellow-logo.svg', class: 'navbar-brand-img', alt: 'MellowD') %>
-      <% end %>
+        <p class="footer-info-text">Own your music and be hired as an independent artist.</p>
 
-      <div class="mt-4">
-        <p>We are here to help artist, our main <br> goal is to help them be independent.</p>
-      </div>
-    </div>
-
-    <div class="section col-md-4 d-flex flex-column">
-      <h4>Look at</h4>
-      <a class="text-white" href="discovers">Discover</a>
-      <a class="text-white" href="events">Events</a>
-      <a class="text-white" href="my_bookings">My Bookings</a>
-      <a class="text-white" href="/users/edit">Profile</a>
-    </div>
-
-    <div class="section col-md-4 input-container">
-      <h4>Join Our Weekly Digest</h4>
-      <p>Get exclusive promotions & updates straight to your inbox</p>
-      <!-- Add your input fields for the newsletter subscription here -->
-
-      <form action="/subscribe" method="POST">
-        <div class="d-flex position-relative">
-          <input type="hidden" name="user_id" value="<%= current_user.id %>">
-          <input id="email" name="email" type="email" class="email-input" placeholder="Enter your email" required>
-          <button class="btn btn-primary sub-btn" type="submit">Subscribe</button>
+        <div class="footer-links">
+          <a href="https://github.com/"><i class="fs-3 text-white text-decoration-none fab fa-github"></i></a>
+          <a href="https://facebook.com/"><i class="fs-3 text-white text-decoration-none fab fa-facebook"></i></a>
+          <a href="https://www.instagram.com/"><i class="fs-3 text-white text-decoration-none fab fa-instagram"></i></a>
         </div>
-      </form>
-    </div>
+      </div>
 
-    <div class="row mt-4">
-      <div class="col-md-12 text-center">
-        <p>© MELLOW*D 2023</p>
+
+
+      <div class="footer-explore-container">
+        <h4 class="footer-explore-title">Explore</h4>
+        <a class="footer-info-text" href="discovers">Upload content</a>
+        <a class="footer-info-text" href="my_bookings">Be an artist</a>
+        <a class="footer-info-text" href="/users/edit">Create an event</a>
+      </div>
+
+      <div class="footer-nesletter-container input-container">
+        <h4 class="footer-newsletter-title"> Join Our Weekly Digest</h4>
+        <p class="footer-info-text">Get exclusive promotions & updates straight to your inbox.</p>
+        <!-- Add your input fields for the newsletter subscription here -->
+
+        <form action="/subscribe" method="POST">
+          <div class="footer-input-container">
+            <input type="hidden" name="user_id" value="<%= current_user.id %>">
+            <input id="email" name="email" type="email" class="email-input" placeholder="Enter your email" required>
+            <button class="footer-btn-primary" type="submit">Subscribe</button>
+          </div>
+        </form>
       </div>
     </div>
+
+    <p class="footer-mellow">© Mellow 2023</p>
   </footer>
 <% end %>
