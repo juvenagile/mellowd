@@ -1,4 +1,4 @@
-.main {
+.discover-container-headline {
   display: flex;
   flex-direction: column;
   padding: 30px;
@@ -7,100 +7,94 @@
   align-items: center;
 }
 
-.title {
+.discover-container-card {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.discover-title {
   font-style: normal;
   font-weight: 600;
   font-size: 28px;
   line-height: 140%;
   text-transform: capitalize;
   text-align: center;
-  color: #FFFFFF;
+  color: $neutral-100;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.subtitle {
+.discover-subtitle {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   text-align: center;
   line-height: 160%;
-  color: #FFFFFF;
+  color: $neutral-40;
 }
 
-.btnPrimary {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 0px 50px;
-  gap: 12px;
-  width: 315px;
-  height: 60px;
-  background: #A259FF;
-  border-radius: 20px;
-  color: #FFFFFF;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 140%;
-}
-
-.events {
+.discover-info {
   display: flex;
   width: 100%;
   justify-content: space-around;
 }
 
-.eventTitle {
-  color: #FFFFFF;
+.discover-info-number {
+  color: $neutral-100;
+  font-family: "Space Mono";
   font-style: normal;
   font-weight: 700;
-  font-size: 22px;
+  font-size: $font-size-l;
   line-height: 160%;
+  margin-bottom: 0;
 }
 
-.eventH2 {
-  color: #FFFFFF;
+.discover-info-text {
+  color: $neutral-100;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: $font-size-m;
   line-height: 140%;
-
+  margin-bottom: 0;
 }
 
-.eventP {
-  color: #FFFFFF;
+.discover-card-main-text {
+  color: $neutral-100;
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: $font-size-m;
   line-height: 140%;
   margin: 0;
 }
 
-.eventP2 {
-  color: #7E7B92;
+.discover-card-second-text {
+  color: $neutral-20;
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: $font-size-s;
   line-height: 140%;
   margin: 0;
 }
 
-.mainCard {
+.discover-card {
   width: 330px;
   height: 460px;
   background-color: #2A2A3F;
   border-radius: 20px;
 }
 
-.card {
+.discover-card-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  padding: 20px 25px;
+  padding: 20px;
 }
 
-.header1 {
+.discover-card-header {
   display: flex;
   gap: 20px;
 }
@@ -110,112 +104,105 @@
   height: 40px;
 }
 
-.footer {
+.discover-card-foot {
   display: flex;
   height: 70px;
   justify-content: space-between;
-  padding: 20px 25px;
+  padding: 20px;
   align-items: center;
 }
 
-.footer1 {
+.discover-card-footer {
   display: flex;
   gap: 20px;
 
 }
 
-.footerIcon {
+.discover-card-footer-btn {
   display: flex;
   gap: 10px;
   display: flex;
   align-items: center;
 }
 
-.iconP {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 140%;
-  color: #7E7B92;
-  margin: 0;
-}
-
-.play {
-  width: 16px;
-  height: 16px;
-}
-
-.imgMain {
+.discover-card-img {
   width: 330px;
   height: 306px;
 }
 
-@media (min-width: 840px) {
-  .mainCard {
+@media (min-width: 740px) {
+  .discover-card {
     width: 330px;
     height: 460px;
   }
 
-  .imgMain {
+  .discover-card-img {
     width: 330px;
     height: 306px;
   }
 
-  .home {
+  .discover {
     display: flex;
   }
 
-  .title {
+  .discover-title {
     font-style: normal;
     font-weight: 600;
-    font-size: 28px;
+    font-size: $font-size-xl;
     line-height: 140%;
     text-transform: capitalize;
     text-align: center;
-    color: #FFFFFF;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: $neutral-100;
   }
 
-  .subtitle {
+  .discover-subtitle {
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-family: "Space Mono";
+    font-size: $font-size-m;
     text-align: center;
     line-height: 160%;
-    color: #FFFFFF;
+    color: $neutral-40;
+
   }
 }
 
-@media (min-width: 1200px) {
-  .home {
+@media (min-width: 1140px) {
+  .discover {
       display: flex;
   }
 
-  .title {
+  .discover-title {
     font-size: 67px;
     line-height: 110%;
     text-align: left;
   }
 
-  .subtitle {
-      font-size: 22px;
+  .discover-subtitle {
+      font-size: $font-size-l;
       text-align: left;
+      font-family: "Space Mono";
   }
 
-  .main {
+  .discover-container-headline {
       align-items: flex-start;
   }
 
-  .events {
+  .discover-container-card {
+    align-items: flex-start;
+  }
+
+  .discover-info {
       justify-content: start;
       gap: 100px;
   }
 
-  .mainCard {
+  .discover-card {
       width: 510px;
       height: 580px;
   }
 
-  .imgMain {
+  .discover-card-img {
       width: 510px;
       height: 412px;
   }

@@ -1,7 +1,13 @@
 <% if user_signed_in? %>
   <footer>
-    <div class="container">
-      <div class="row">
+    <div class="row">
+      <div class="col-md-4">
+          <img src="https://res.cloudinary.com/durk9nkxa/image/upload/v1686351213/mELLOW_d_mtssdn.png" width="200">
+        <div class="mt-4">
+        <p>Get inspired with events</p>
+        <p>Join our community</p>
+        </div>
+      </div>
 
         <div class="section col-md-4">
             <%= link_to root_path, class: "navbar-brand" do %>
@@ -10,8 +16,9 @@
           <div class="mt-4">
           <p>We are here to help artist, our main <br> goal is to help them be independent.</p>
           </div>
-        </div>
-
+        </form>
+      </div>
+    </div>
         <div class="section col-md-4 d-flex flex-column">
           <h4>Look at</h4>
           <a class="text-white" href="discovers">Discover</a>
@@ -34,24 +41,12 @@
           </form>
         </div>
       </div>
+    </div>
 
-      <div class="row mt-4">
-        <div class="col-md-12 text-center">
-          <div class="footer-links">
-            <a href="https://github.com/"><i class="fs-3 text-white text-decoration-none fab fa-github text-purple"></i></a>
-            <a href="https://www.youtube.com/"><i class="fs-3 text-white text-decoration-none fab fa-youtube text-purple"></i></a>
-            <a href="https://twitter.com/"><i class="fs-3 text-white text-decoration-none fab fa-twitter text-purple"></i></a>
-            <a href="https://www.instagram.com/"><i class="fs-3 text-white text-decoration-none fab fa-instagram text-purple"></i></a>
-          </div>
-        </div>
+    <div class="row mt-4">
+      <div class="col-md-12 text-center">
+        <p>© MELLOW*D 2023</p>
       </div>
-
-      <div class="row mt-4">
-        <div class="col-md-12 text-center">
-          <p class="text-purple">© MELLOW*D 2023</p>
-        </div>
-      </div>
-
     </div>
   </footer>
 <% end %>
