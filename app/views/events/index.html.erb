@@ -9,7 +9,7 @@
           <p data-genre="<%= genre %>"><%= genre %></p>
         <% end %>
       <% end %>
-          <%= link_to "Create new event", new_event_path, class: "btn btn-primary m-3" if policy(Event).new? %>
+          <%= link_to "My events", my_events_path, class: "text-white btn btn-primary m-3" if policy(Event).new? %>
     </div>
   </div>
 </div>

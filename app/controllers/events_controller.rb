@@ -17,7 +17,7 @@ class EventsController < ApplicationController
 
 
     @events = @events.where(genre: params[:genre]) if params[:genre].present? && params[:genre] != "All"
-    
+
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,

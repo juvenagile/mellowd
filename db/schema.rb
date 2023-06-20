@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_14_181515) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_20_004931) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_181515) do
     t.bigint "user_id", null: false
     t.index ["event_id"], name: "index_bookings_on_event_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "chat_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_chat_users_on_chatroom_id"
+    t.index ["user_id"], name: "index_chat_users_on_user_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "dashboards", force: :cascade do |t|
@@ -100,6 +115,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_181515) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "newsletter_messages", force: :cascade do |t|
+    t.string "subject"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "email"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "user_dashboards", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "dashboard_id", null: false
@@ -129,9 +169,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_181515) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "events"
   add_foreign_key "bookings", "users"
+  add_foreign_key "chat_users", "chatrooms"
+  add_foreign_key "chat_users", "users"
   add_foreign_key "dashboards", "users"
   add_foreign_key "discovers", "users"
   add_foreign_key "events", "users", on_delete: :cascade
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "subscriptions", "users"
   add_foreign_key "user_dashboards", "dashboards"
   add_foreign_key "user_dashboards", "users"
 end
