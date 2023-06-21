@@ -18,11 +18,12 @@ Dashboard.destroy_all
 
 all_user = []
 10.times do |i|
-  admin = i % 2 == 0 ? true : false
-  user = User.create(email: "user#{i}@example.com", password: "12345678", first_name: "First Name #{i}", last_name: "Last Name #{i}", admin: admin)
+  artist = i % 2 == 0 ? true : false
+  user = User.create(email: "user#{i}@example.com", password: "12345678", first_name: "First Name #{i}", last_name: "Last Name #{i}", artist: artist)
   all_user << user
   puts 'User created'
 end
+
 10.times do
   index = rand(0...titles.length)
   event = Event.new(

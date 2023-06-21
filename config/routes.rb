@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   post 'subscribe', to: 'subscriptions#create'
   get 'edit_newsletter_message', to: 'newsletter_messages#edit'
   patch 'update_newsletter_message', to: 'newsletter_messages#update'
+  get '/audio-content', to: 'dashboards#audio'
+  get '/video-content', to: 'dashboards#video'
+  get '/images-content', to: 'dashboards#images'
 end
