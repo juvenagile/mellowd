@@ -5,7 +5,7 @@
         Discover Music Gems For Your Next Events
       </h1>
       <p class="discover-subtitle">
-        Connect with your favorite artists, track their next events and invest in them to support their careers.
+        Connect with your favorite artists, get inspiration from the latest trends and discover your sound.
       </p>
     </div>
     <div class="discovery-container-buttons">
@@ -82,14 +82,14 @@
   </div>
   <div class="discover-container-trend">
       <h2>Trending videos</h2>
-      <div class="bar" data-controller="genre">
+
+      <div class="genre-filter-container" data-controller="genre">
         <% @genres.each do |genre| %>
-          <%= link_to events_path(genre: genre), class: "text-decoration-none text-secondary lh-lg icon-link #{genre}", data: {"genre-target": "genreButton", action: "click->genre#toggleColor" } do %>
-            <i data-genre="<%= genre %>" class="<%= @genre_icon_classes[genre] %>" style="font-size: 20px;"></i>
+          <%= link_to events_path(genre: genre), class: "genre-icon-link", data: {"genre-target": "genreButton", action: "click->genre#toggleColor" } do %>
+            <i data-genre="<%= genre %>" class="<%= @genre_icon_classes[genre] %>"></i>
             <p data-genre="<%= genre %>"><%= genre %></p>
+          <% end %>
         <% end %>
-      <% end %>
-          <%= link_to "My events", my_events_path, class: "text-white btn btn-primary m-3" if policy(Event).new? %>
-    </div>
+      </div>
   </div>
 </div>
