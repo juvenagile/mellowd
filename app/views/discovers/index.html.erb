@@ -8,10 +8,15 @@
         Connect with your favorite artists, track their next events and invest in them to support their careers.
       </p>
     </div>
-    <button class="btn-primary-fill">
-       <i class="ri-ticket-2-line ri-xl ri-neutral-100"></i>
-      Get Started
-    </button>
+    <div class="discovery-container-buttons">
+      <button class="discover-btn-primary">
+        Get inspiration
+      </button>
+
+      <button class="discover-btn-secondary">
+        Upload music
+      </button>
+    </div>
     <div class="discover-info">
       <div>
         <h2 class="discover-info-number">
@@ -73,6 +78,18 @@
         </div>
          <i class="ri-bookmark-line ri-xl ri-neutral-20"></i>
       </div>
+    </div>
+  </div>
+  <div class="discover-container-trend">
+      <h2>Trending videos</h2>
+      <div class="bar" data-controller="genre">
+        <% @genres.each do |genre| %>
+          <%= link_to events_path(genre: genre), class: "text-decoration-none text-secondary lh-lg icon-link #{genre}", data: {"genre-target": "genreButton", action: "click->genre#toggleColor" } do %>
+            <i data-genre="<%= genre %>" class="<%= @genre_icon_classes[genre] %>" style="font-size: 20px;"></i>
+            <p data-genre="<%= genre %>"><%= genre %></p>
+        <% end %>
+      <% end %>
+          <%= link_to "My events", my_events_path, class: "text-white btn btn-primary m-3" if policy(Event).new? %>
     </div>
   </div>
 </div>

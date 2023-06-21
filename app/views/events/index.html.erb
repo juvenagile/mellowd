@@ -3,7 +3,7 @@
     <h1 class='text-white'>Browse Events</h1>
     <h5 class='text-white my-4'>
     <% if params[:query].blank?%>
-    There are <%= pluralize @events.count, "event" %> events near you.</h5>
+      There are <%= pluralize @events.count, "event" %> events near you.</h5>
     <% end %>
     <div class="bar" data-controller="genre">
       <% @genres.each do |genre| %>
