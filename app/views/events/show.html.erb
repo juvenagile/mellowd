@@ -4,13 +4,13 @@
 
 <div class="event-show-container">
 
-  <div class="event-show-image">
-  <% if @event.image.attached?%>
-    <%= image_tag url_for(@event.image)%>
+<div class="event-show-image">
+  <% if @event.image.attached? %>
+    <%= image_tag url_for(@event.image), class: "event-image" %>
   <% else %>
-    <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
+    <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "event-image rounded", style: "border-radius: 15px !important;" %>
   <% end %>
-  </div>
+</div>
 
   <% if current_user.artist && current_user != @event.user %>
     <div class="event-show-postulate-button">
