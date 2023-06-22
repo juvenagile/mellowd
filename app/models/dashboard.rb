@@ -1,5 +1,6 @@
 class Dashboard < ApplicationRecord
   belongs_to :user
+  has_one_attached :photo
   has_many :user_dashboards, dependent: :destroy
   has_many :users, through: :user_dashboards
   validates :artist_genre, presence: true
