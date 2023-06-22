@@ -10,12 +10,12 @@
         </p>
       </div>
       <div class="discovery-container-buttons">
-        <button class="discover-btn-primary">
-          Get inspiration
-        </button>
-        <button class="discover-btn-secondary">
-          Upload music
-        </button>
+        <% if current_user.artist? %>
+          <%= link_to "Create Event", new_event_path, class: "discover-btn-primary" %>
+          <%= link_to "Upload music", dashboards_path, class: "discover-btn-secondary" %>
+        <% else %>
+          <%= link_to "Create Event", new_event_path, class: "discover-btn-primary" %>
+        <% end %>
       </div>
       <div class="discover-info">
         <div>
@@ -28,7 +28,7 @@
         </div>
         <div>
           <h2 class="discover-info-number">
-            20k+
+            <%= @event.count %>
           </h2>
           <p class="discover-info-text">
             Events
@@ -36,7 +36,7 @@
         </div>
         <div>
           <h2 class="discover-info-number">
-            10k+
+          <%= @artist_count %>
           </h2>
           <p class="discover-info-text">
             Artists

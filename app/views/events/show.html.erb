@@ -4,38 +4,48 @@
 
 <div class="event-show-container">
 
-  <div class="event-show-image">
-  <% if @event.image.attached?%>
-    <%= image_tag url_for(@event.image)%>
+<div class="event-show-image">
+  <% if @event.image.attached? %>
+    <%= image_tag url_for(@event.image), class: "event-image" %>
   <% else %>
-    <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
+    <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "event-image rounded", style: "border-radius: 15px !important;" %>
   <% end %>
+</div>
+
+  <% if current_user.artist && current_user != @event.user %>
+    <div class="event-show-postulate-button">
+      <% if current_user.applied_to?(@event) %>
+        <%= form_with url: user_received_messages_path(@event.user), method: :post do |f| %>
+          <%= f.hidden_field :content, value: "Your message here" %>
+          <%= f.submit "Send message", class: "discover-btn-primary" %>
+        <% end %>
+      <% else %>
+        <%= link_to event_bookings_path(@event), data: { turbo_method: :post }, class: "discover-btn-primary"  do %>
+          <p>Postulate position</p>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="event-show-edit">
+    <% if policy(@event).edit? %>
+      <%= link_to edit_event_path(@event) do %>
+        <p><i class="fa-regular fa-pen-to-square"></i> Edit this event</p>
+      <% end %>
+    <% end %>
+
+    <% if policy(@event).destroy? %>
+      <%= button_to @event, method: :delete, data: { confirm: "Are you sure?" } do %>
+        <p><i class="fa-regular fa-trash-can"></i> Delete this event</p>
+      <% end %>
+    <% end %>
   </div>
 
-  <div class="event-show-postulate-button">
-  <% if current_user.artist %>
-    <%= link_to event_bookings_path(@event), data: { turbo_method: :post } do %>
-      <p>Postulate position</p>
-    <% end%>
-  <% end %>
-  </div>
 
   <div class="event-show-content-row">
 
     <div class="event-show-details">
       <%= render @event %>
-
-      <% if policy(@event).edit? %>
-        <%= link_to edit_event_path(@event) do %>
-          <i class="fa-regular fa-pen-to-square text-white"></i>
-        <% end %>
-      <% end %>
-
-      <% if policy(@event).destroy? %>
-        <%= button_to @event, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", style: "background-color: transparent; border-color: transparent;" do %>
-          <i class="fa-regular fa-trash-can text-white"></i>
-        <% end %>
-      <% end %>
     </div>
 
   <div class="event-show-map">

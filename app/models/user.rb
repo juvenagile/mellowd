@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def likes
     self.discover.likes
   end
+
+  def applied_to?(event)
+    bookings.where(event: event).exists?
+  end
 end

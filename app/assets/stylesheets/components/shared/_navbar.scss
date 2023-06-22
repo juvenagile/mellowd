@@ -20,6 +20,12 @@
   display: none;
 }
 
+.navbar-brand p {
+  font-style: normal;
+  font-size: 16px;
+  line-height: 160%;
+}
+
 .navbar-nav{
   display: flex;
   flex-direction: row;
@@ -48,8 +54,9 @@
     gap: 40px;
   }
 
-   .navbar-brand {
+  .navbar-brand {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

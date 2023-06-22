@@ -1,4 +1,7 @@
-<div class="container mt-5">
+<% if @dashboards.empty? %>
+  <p>It looks like you don't have any dashboards. Create a new one to upload your content.</p>
+  <%= link_to "Create new dashboard", new_dashboard_path, class: "btn btn-primary text-white" %>
+<% else %>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
     <% @dashboards.each do |dashboard| %>
       <% if dashboard && dashboard.persisted? %>
@@ -14,4 +17,4 @@
     <% end %>
   </div>
   <%= link_to "Create new dashboard", new_dashboard_path, class: "btn btn-primary text-white" %>
-</div>
+<% end %>

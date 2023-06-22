@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[index show create]
   end
 
+  resources :users, only: [] do
+    resources :received_messages, only: :create
+  end
+
   resources :dashboards
   resources :chatrooms, only: %i[show index create destroy] do
     resources :messages, only: :create
