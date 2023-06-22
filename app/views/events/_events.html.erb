@@ -1,19 +1,48 @@
 <div class="container">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
     <% events.each do |event| %>
       <% if event && event.persisted? %>
         <div class="col mb-4">
           <%= link_to event_path(event), class: "text-decoration-none" do %>
-            <div class="card", style= "border-radius: 0px !important">
-              <% if event.photo.attached?%>
-                <%= image_tag url_for(event.photo)%>
-              <% else %>
-                <%= image_tag "https://picsum.photos/seed/picsum/200/200" %>
-              <% end %>
-              <h5 style="margin-top: 10px; margin-left: 5px; margin-bottom: 10px;"><strong><%= event.title %></strong></h5>
-              <p style="margin: 5px; color: #706F8F;"><strong>Duration:</strong> <%= event.duration %></p>
-              <p style="margin: 5px; color: #706F8F;"><strong>Genre:</strong> <%= event.genre %></p>
+
+            <%# _event-card.html.erb %>
+            <div class="event-card-container">
+              <div class="event-card">
+                <% if event.photo.attached?%>
+                  <%= image_tag url_for(event.photo), class: "event-card-image"%>
+                <% else %>
+                  <%= image_tag("marco-mons-DIXT8Z9p-Sg-unsplash.jpg", class: "event-card-image") %>
+                <% end %>
+
+                <div class="event-card-header">
+                  <h5 class="event-card-main-title"><%= event.title %></h5>
+
+                  <div class="event-card-user">
+
+                    <%= image_tag("priscilla-du-preez-v0kQglce46E-unsplash.jpg", class: "imgCard avatar") %>
+
+                    <p class="event-card-second-title"><%= event.genre %></p>
+                  </div>
+                </div>
+
+                <div class="event-card-details">
+
+                  <div class="col-6 d-flex justify-content-start">
+                    <div class="event-card-location">
+                      <p class="event-card-second-text">Location</p>
+                      <p class="event-card-main-text"><%= event.address %></p>
+                    </div>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end">
+                    <div class="event-card-date">
+                      <p class="event-card-second-text">Date</p>
+                      <p class="event-card-main-text"><%= event.datetime %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
           <% end %>
         </div>
       <% end %>

@@ -4,13 +4,14 @@
 @import "main/avatar";
 @import "main/button";
 @import "main/tab";
+@import "main/image";
 @import "shared/navbar";
 @import "shared/footer";
 @import "shared/form";
 @import "shared/genre-filter";
-@import "event/card";
+@import "event/event-card";
 @import "event/map";
+@import "event/show";
 @import "dashboard/dashboard";
-@import "discover/discover-card";
 @import "discover/discover";
 @import "chatroom";

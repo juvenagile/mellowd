@@ -1,22 +1,44 @@
 <div class="nav-container">
+
   <div class="container edit-text">
-    <h1 class='text-white'>Browse Events</h1>
-    <h5 class='text-white my-4'>
-    <% if params[:query].blank?%>
-    There are <%= pluralize @events.count, "event" %> events near you.</h5>
-    <% end %>
-    <div class="bar" data-controller="genre">
+
+    <div class="nav-index-title">
+      <h1 class='text-white'>Browse Events</h1>
+      <h3 class='text-white my-4'>
+      <% if params[:query].blank?%>
+        There are <%= pluralize @events.count, "event" %> events near you.</h3>
+      <% end %>
+    </div>
+
+    <div class="index-event-buttons-row">
+
+      <div class="my-events-button-index">
+        <h5> Loook at your current events.</h5>
+        <%= link_to "My events", my_events_path, class: "text-white btn btn-primary" if policy(Event).new? %>
+      </div>
+
+      <div class="my-bookings-button-index">
+        <% if current_user.artist %>
+        <h5> Loook at the events you've applied to.</h5>
+          <%= link_to "My bookings", my_bookings_path, class: "text-white btn btn-primary" %>
+        <% end %>
+      </div>
+
+  </div>
+
+    <div class="genre-filter-container" data-controller="genre">
       <% @genres.each do |genre| %>
-        <%= link_to events_path(genre: genre), class: "text-decoration-none text-secondary lh-lg icon-link #{genre}", data: {"genre-target": "genreButton", action: "click->genre#toggleColor" } do %>
-          <i data-genre="<%= genre %>" class="<%= @genre_icon_classes[genre] %>" style="font-size: 20px;"></i>
+        <%= link_to events_path(genre: genre), class: "genre-icon-link", data: {"genre-target": "genreButton", action: "click->genre#toggleColor" } do %>
+          <i data-genre="<%= genre %>" class="<%= @genre_icon_classes[genre] %>"></i>
           <p data-genre="<%= genre %>"><%= genre %></p>
         <% end %>
       <% end %>
-          <%= link_to "My events", my_events_path, class: "text-white btn btn-primary m-3" if policy(Event).new? %>
     </div>
-  </div>
+
 </div>
 
-<%= turbo_frame_tag "events", target: "_top" do %>
-    <%= render "events", events: @events, markers: @markers %>
-<% end %>
+<div class="event-cards-render">
+  <%= turbo_frame_tag "events", target: "_top" do %>
+      <%= render "events", events: @events, markers: @markers %>
+  <% end %>
+</div>

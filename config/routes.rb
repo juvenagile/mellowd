@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get '/audio-content', to: 'dashboards#audio'
   get '/video-content', to: 'dashboards#video'
   get '/images-content', to: 'dashboards#images'
+  get 'activity', to: 'messages#index', as: :activity
 end

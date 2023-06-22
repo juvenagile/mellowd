@@ -4,7 +4,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background: $blue-60;
+  background: $blue-80;
   z-index: 9999;
 }
 
@@ -40,7 +40,7 @@
     position: static;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px 40px;
+    padding: 20px 30px;
   }
 
   .navbar-nav {
@@ -51,9 +51,5 @@
    .navbar-brand {
     display: flex;
     align-items: center;
-  }
-
-  .navbar-logo {
-    width: 100%;
   }
 }

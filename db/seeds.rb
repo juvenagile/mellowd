@@ -46,6 +46,7 @@ contents = ["Content 1", "Content 2", "Content 3", "Content 4", "Content 5"]
     content: contents.sample,
     likes: rand(0..100),
     plays: rand(0..100),
+    genre: GENRE.sample,
     saved: [true, false].sample,
     start_time: rand(1.0..10.0).round(2),
     end_time: rand(10.0..20.0).round(2),
