@@ -1,6 +1,6 @@
 .dashboard-banner-logo {
   position: absolute;
-  bottom: 350px;
+  bottom: 330px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 15px;
@@ -26,6 +26,27 @@
   object-fit: cover;
 }
 
+.tabs-underlined {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabs-underlined .tab-underlined {
+  color: rgb(255, 255, 255);
+  padding: 8px;
+  margin: 8px;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+
+.tabs-underlined .tab-underlined.active {
+  opacity: 1;
+  border-bottom: 3px solid #555555;
+}
+
 @media (max-width: 576px) {
   .banner {
       height: 200px;
@@ -34,6 +55,6 @@
 
 @media (max-width: 576px) {
   .dashboard-banner-logo {
-      bottom: 610px;
+      bottom: 640px;
   }
 }

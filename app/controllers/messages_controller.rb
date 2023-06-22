@@ -1,4 +1,9 @@
 class MessagesController < ApplicationController
+
+  def index
+    @messages = policy_scope(Message).where(recipient_id: current_user.id)
+  end
+
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)

@@ -1,9 +1,9 @@
 class MessagePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+    def resolve
+      scope.where(recipient_id: user)
+    end
   end
 
   def create?
