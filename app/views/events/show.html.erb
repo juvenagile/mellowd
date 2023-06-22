@@ -5,8 +5,8 @@
 <div class="event-show-container">
 
   <div class="event-show-image">
-  <% if @event.photo.attached?%>
-    <%= image_tag url_for(@event.photo)%>
+  <% if @event.image.attached?%>
+    <%= image_tag url_for(@event.image)%>
   <% else %>
     <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
   <% end %>
@@ -39,7 +39,7 @@
     </div>
 
   <div class="event-show-map">
-    <div style="height: 600px;" 
+    <div style="height: 600px;"
       data-controller="map"
       data-map-markers-value="<%= @marker.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
