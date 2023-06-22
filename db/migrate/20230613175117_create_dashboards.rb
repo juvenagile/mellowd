@@ -2,7 +2,6 @@ class CreateDashboards < ActiveRecord::Migration[7.0]
   def change
     create_table :dashboards do |t|
       t.string :artist_genre
-      t.boolean :solo_or_band
       t.integer :artist_count
       t.string :artist_name
       t.string :artist_instrument

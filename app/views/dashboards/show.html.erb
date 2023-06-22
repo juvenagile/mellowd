@@ -13,10 +13,7 @@
       </div>
       <div class="mx-3">
         <i class="fas fa-users"></i>
-        <p><%= @dashboard.solo_or_band ? "Band" : "Solo" %></p>
-        <% if @dashboard.solo_or_band %>
-          <p><%= @dashboard.artist_count %></p>
-        <% end %>
+        <p><%= @dashboard.artist_count %></p>
       </div>
       <div class="mx-3">
         <i class="fas fa-music"></i>

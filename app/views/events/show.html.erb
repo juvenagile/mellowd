@@ -5,8 +5,8 @@
 <div class="event-show-container">
 
   <div class="event-show-image">
-  <% if @event.photo.attached?%>
-    <%= image_tag url_for(@event.photo)%>
+  <% if @event.image.attached?%>
+    <%= image_tag url_for(@event.image)%>
   <% else %>
     <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
   <% end %>
@@ -17,10 +17,10 @@
       <% if current_user.applied_to?(@event) %>
         <%= form_with url: user_received_messages_path(@event.user), method: :post do |f| %>
           <%= f.hidden_field :content, value: "Your message here" %>
-          <%= f.submit "Send message", class: "btn btn-outline-dark" %>
+          <%= f.submit "Send message", class: "discover-btn-primary" %>
         <% end %>
       <% else %>
-        <%= link_to event_bookings_path(@event), data: { turbo_method: :post } do %>
+        <%= link_to event_bookings_path(@event), data: { turbo_method: :post }, class: "discover-btn-primary"  do %>
           <p>Postulate position</p>
         <% end %>
       <% end %>

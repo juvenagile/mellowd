@@ -1,7 +1,7 @@
 <div class="event-container">
               <div class="event-card">
-                <% if event.photo.attached?%>
-                  <%= image_tag url_for(event.photo), class: "event-card-image"%>
+                <% if event.image.attached?%>
+                  <%= image_tag url_for(event.image), class: "event-card-image"%>
                 <% else %>
                   <%= image_tag("marco-mons-DIXT8Z9p-Sg-unsplash.jpg", class: "event-card-image") %>
                 <% end %>

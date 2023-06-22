@@ -11,16 +11,10 @@
       </div>
       <div class="discovery-container-buttons">
         <% if current_user.artist? %>
-          <button class="discover-btn-primary">
-            Get inspiration
-          </button>
-          <button class="discover-btn-secondary">
-            Upload music
-          </button>
+          <%= link_to "Create Event", new_event_path, class: "discover-btn-primary" %>
+          <%= link_to "Upload music", dashboards_path, class: "discover-btn-secondary" %>
         <% else %>
-          <button class="discover-btn-primary">
-            See artists
-          </button>
+          <%= link_to "Create Event", new_event_path, class: "discover-btn-primary" %>
         <% end %>
       </div>
       <div class="discover-info">
@@ -106,8 +100,8 @@
           <div class="discover-card">
             <div class="discover-card-head">
               <div class="discover-card-header">
-                <% if discover.dashboard.photo.attached? %>
-                  <%= image_tag(discover.dashboard.image.url, class: "imgCard avatar") %>
+                <% if discover.dashboard.image.attached? %>
+                  <%= image_tag(discover.dashboard.image, class: "imgCard avatar") %>
                 <% else %>
                   <%= image_tag("priscilla-du-preez-v0kQglce46E-unsplash.jpg", class: "imgCard avatar") %>
                 <% end %>

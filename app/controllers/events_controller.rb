@@ -25,7 +25,7 @@ class EventsController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: { event: event })
       }
     end
-    
+
     @genres = %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir All]
     @genre_icon_classes = {
       "Rock" => "fa-solid fa-guitar",
@@ -105,6 +105,6 @@ class EventsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def event_params
-    params.require(:event).permit(:title, :description, :datetime, :duration, :genre, :address, :user_id, :photo)
+    params.require(:event).permit(:title, :description, :datetime, :duration, :genre, :address, :user_id, :image)
   end
 end

@@ -11,8 +11,8 @@
         <div class="col mb-4">
           <%= link_to event, class: "text-decoration-none" do %>
             <div class="card">
-                <% if event.photo.attached?%>
-                  <%= image_tag url_for(event.photo)%>
+                <% if event.image.attached?%>
+                  <%= image_tag url_for(event.image)%>
                 <% else %>
                   <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
                 <% end %>
@@ -26,4 +26,3 @@
     </div>
   <% end %>
 </div>
-
