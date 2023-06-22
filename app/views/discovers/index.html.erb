@@ -100,8 +100,8 @@
           <div class="discover-card">
             <div class="discover-card-head">
               <div class="discover-card-header">
-                <% if discover.dashboard.photo.attached? %>
-                  <%= image_tag(discover.dashboard.image.url, class: "imgCard avatar") %>
+                <% if discover.dashboard.image.attached? %>
+                  <%= image_tag(discover.dashboard.image, class: "imgCard avatar") %>
                 <% else %>
                   <%= image_tag("priscilla-du-preez-v0kQglce46E-unsplash.jpg", class: "imgCard avatar") %>
                 <% end %>

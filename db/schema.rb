@@ -70,7 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_021847) do
 
   create_table "dashboards", force: :cascade do |t|
     t.string "artist_genre"
-    t.boolean "solo_or_band"
     t.integer "artist_count"
     t.string "artist_name"
     t.string "artist_instrument"
