@@ -2,6 +2,8 @@ class DiscoversController < ApplicationController
   before_action :set_discover, only: %i[show edit destroy]
 
   def index
+    @event = Event.all
+    @artist_count = User.where(artist: true).count
     @discovers = policy_scope(Discover)
     @discovers = Discover.all
 

@@ -4,8 +4,10 @@
       <%= link_to root_path do %>
         <%= image_tag('mellow-logo.svg', class: 'logo', alt: 'MellowD') %>
       <% end %>
+      <% if current_user.artist %>
+        <p class="text-white" > Artist</p>
+      <% end %>
     </div>
-
 
 
     <ul class="navbar-nav">
