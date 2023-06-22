@@ -10,9 +10,6 @@ application.register("address-autocomplete", AddressAutocompleteController)
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
-import DropupController from "./dropup_controller"
-application.register("dropup", DropupController)
-
 import EventController from "./event_controller"
 application.register("event", EventController)
 
@@ -27,3 +24,6 @@ application.register("hide-stuff", HideStuffController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import TabsController from "./tabs_controller"
+application.register("tabs", TabsController)

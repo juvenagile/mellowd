@@ -54,6 +54,30 @@ class DashboardsController < ApplicationController
     redirect_to dashboards_url, notice: "Dashboard was successfully destroyed.", status: :see_other
   end
 
+  def audio
+    # Load the audio content from your model or database
+    @audio_content = Dashboard.find(params[:id]).audio_content
+
+    # Render the audio content as HTML
+    render html: @audio_content
+  end
+
+  def video
+    # Load the video content from your model or database
+    @video_content = Dashboard.find(params[:id]).video_content
+
+    # Render the video content as HTML
+    render html: @video_content
+  end
+
+  def images
+    # Load the images content from your model or database
+    @images_content = Dashboard.find(params[:id]).images_content
+
+    # Render the images content as HTML
+    render html: @images_content
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

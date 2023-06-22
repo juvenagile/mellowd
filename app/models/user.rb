@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :events, through: :bookings
   has_many :messages
+  has_many :received_messages, class_name: 'Message', foreign_key: 'recipient_id'
   has_many :chat_users
   has_many :chatrooms, through: :chat_users
   has_many :dashboards, through: :user_dashboards

@@ -11,6 +11,7 @@ descriptions = ["An in-depth look at the advancements and potential of artificia
   "A celebration of the beauty and diversity of the natural world.",
   "A history of technological advancements and their impact on society."]
 datetimes = ["2023-06-11 09:00", "2023-06-12 14:00", "2023-06-13 16:00", "2023-06-14 18:00", "2023-06-15 10:00", "2023-06-16 12:00", "2023-06-17 15:00", "2023-06-18 17:00", "2023-06-19 19:00", "2023-06-20 11:00"]
+
 User.destroy_all
 Event.destroy_all
 Discover.destroy_all
@@ -18,11 +19,12 @@ Dashboard.destroy_all
 
 all_user = []
 10.times do |i|
-  admin = i % 2 == 0 ? true : false
-  user = User.create(email: "user#{i}@example.com", password: "12345678", first_name: "First Name #{i}", last_name: "Last Name #{i}", admin: admin)
+  artist = i % 2 == 0 ? true : false
+  user = User.create(email: "user#{i}@example.com", password: "12345678", first_name: "First Name #{i}", last_name: "Last Name #{i}", artist: artist)
   all_user << user
   puts 'User created'
 end
+
 10.times do
   index = rand(0...titles.length)
   event = Event.new(
@@ -37,22 +39,8 @@ end
   event.save!
   puts 'Event created'
 end
-titles = ["Discover 1", "Discover 2", "Discover 3", "Discover 4", "Discover 5"]
+titles = ["Discover 1", "Discover 2", "Discover 3", "Discover 4", "Discover 5", "Discover 6", "Discover 7", "Discover 8", "Discover 9", "Discover 10"]
 contents = ["Content 1", "Content 2", "Content 3", "Content 4", "Content 5"]
-10.times do
-  discover = Discover.new(
-    title: titles.sample,
-    content: contents.sample,
-    likes: rand(0..100),
-    plays: rand(0..100),
-    saved: [true, false].sample,
-    start_time: rand(1.0..10.0).round(2),
-    end_time: rand(10.0..20.0).round(2),
-    user_id: all_user.sample.id
-  )
-  discover.save!
-  puts 'Discover created'
-end
 
 10.times do |i|
   Dashboard.create(
@@ -70,4 +58,30 @@ end
     user_id: all_user.sample.id
   )
   puts 'Dashboard created'
+end
+
+all_dashboards = Dashboard.all
+
+titles.each_with_index do |title, index|
+  discover = Discover.new(
+    title: title,
+    content: contents.sample,
+    likes: rand(0..100),
+    plays: rand(0..100),
+    genre: GENRE.sample,
+    saved: [true, false].sample,
+    start_time: rand(1.0..10.0).round(2),
+    end_time: rand(10.0..20.0).round(2),
+    dashboard_id: all_dashboards.sample.id
+  )
+
+  video_path = Rails.root.join('app', 'assets', 'videos', "#{index + 1}.mp4")
+
+  # Attach the video file if it exists, otherwise fallback to the default image
+  if File.exist?(video_path)
+    discover.video.attach(io: File.open(video_path), filename: "#{index + 1}.mp4", content_type: 'video/mp4')
+  end
+
+  discover.save!
+  puts 'Discover created'
 end

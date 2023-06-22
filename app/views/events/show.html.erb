@@ -2,8 +2,9 @@
   <i class="fas fa-arrow-left"></i>
 <% end %>
 
-<div class="container">
-  <div class="card-show">
+<div class="event-show-container">
+
+  <div class="event-show-image">
   <% if @event.photo.attached?%>
     <%= image_tag url_for(@event.photo)%>
   <% else %>
@@ -11,14 +12,17 @@
   <% end %>
   </div>
 
+  <div class="event-show-postulate-button">
   <% if current_user.artist %>
     <%= link_to event_bookings_path(@event), data: { turbo_method: :post } do %>
       <p>Postulate position</p>
     <% end%>
   <% end %>
+  </div>
 
-  <div class="row">
-    <div class="col-md-6 text-white fs-5 lh-lg d-flex justify-content-center">
+  <div class="event-show-content-row">
+
+    <div class="event-show-details">
       <%= render @event %>
 
       <% if policy(@event).edit? %>
@@ -34,11 +38,12 @@
       <% end %>
     </div>
 
-  <div class="col-md-6">
-    <div style="border-radius: 15px; width: 100%; height: 600px;" 
+  <div class="event-show-map">
+    <div style="height: 600px;" 
       data-controller="map"
       data-map-markers-value="<%= @marker.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
   </div>
+
 </div>
