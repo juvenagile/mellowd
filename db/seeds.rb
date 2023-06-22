@@ -38,23 +38,6 @@ end
   event.save!
   puts 'Event created'
 end
-titles = ["Discover 1", "Discover 2", "Discover 3", "Discover 4", "Discover 5"]
-contents = ["Content 1", "Content 2", "Content 3", "Content 4", "Content 5"]
-10.times do
-  discover = Discover.new(
-    title: titles.sample,
-    content: contents.sample,
-    likes: rand(0..100),
-    plays: rand(0..100),
-    genre: GENRE.sample,
-    saved: [true, false].sample,
-    start_time: rand(1.0..10.0).round(2),
-    end_time: rand(10.0..20.0).round(2),
-    user_id: all_user.sample.id
-  )
-  discover.save!
-  puts 'Discover created'
-end
 
 10.times do |i|
   Dashboard.create(
@@ -72,4 +55,23 @@ end
     user_id: all_user.sample.id
   )
   puts 'Dashboard created'
+end
+
+titles = ["Discover 1", "Discover 2", "Discover 3", "Discover 4", "Discover 5"]
+contents = ["Content 1", "Content 2", "Content 3", "Content 4", "Content 5"]
+all_dashboards = Dashboard.all
+10.times do
+  discover = Discover.new(
+    title: titles.sample,
+    content: contents.sample,
+    likes: rand(0..100),
+    plays: rand(0..100),
+    genre: GENRE.sample,
+    saved: [true, false].sample,
+    start_time: rand(1.0..10.0).round(2),
+    end_time: rand(10.0..20.0).round(2),
+    dashboard_id: all_dashboards.sample.id
+  )
+  discover.save!
+  puts 'Discover created'
 end

@@ -61,6 +61,6 @@ class DiscoversController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def discover_params
-    params.require(:discover).permit(:content, :likes, :plays, :saved, :start_time, :end_time, :user_id, :title)
+    params.require(:discover).permit(:content, :likes, :plays, :saved, :start_time, :end_time, :dashboard_id, :title)
   end
 end

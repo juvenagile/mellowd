@@ -1,16 +1,27 @@
 <div class="container mx-auto mt-4">
-<h2 class="text-white">Events I Applied To:</h2>
-  <div class="row">
+  <% if @my_bookings.empty? %>
+    <p>Looks like you have no pending events, please look at all events to see play</p>
+    <%= link_to "All Events", events_path, class: "btn btn-primary text-white my-5" %>
+  <% else %>
     <% @my_bookings.each do |booking| %>
-      <div class="col-lg-3 my-3">
-        <div class="card" style="width: 18rem; height: 22rem;">
-          <div class="card-body position-relative">
-            <h5 class="card-title"><%= booking.event.title %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"></h6>
-            <%= link_to "Details", event_path(booking.event), class: "btn btn-outline-dark position-absolute bottom-0 end-0 m-2" %>
-          </div>
+
+      <div class="container mx-auto mt-4">
+      <h2 class="text-white">Events I Applied To:</h2>
+        <div class="row">
+          <% @my_bookings.each do |booking| %>
+            <div class="col-lg-3 my-3">
+              <div class="card" style="width: 18rem; height: 22rem;">
+                <div class="card-body position-relative">
+                  <h5 class="card-title"><%= booking.event.title %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"></h6>
+                  <%= link_to "Details", event_path(booking.event), class: "btn btn-outline-dark position-absolute bottom-0 end-0 m-2" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
+
     <% end %>
-  </div>
+  <% end %>
 </div>

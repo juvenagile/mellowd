@@ -13,12 +13,21 @@
   </div>
 
   <div class="event-show-postulate-button">
-  <% if current_user.artist %>
-    <%= link_to event_bookings_path(@event), data: { turbo_method: :post } do %>
-      <p>Postulate position</p>
-    <% end%>
-  <% end %>
+    <% if current_user.artist %>
+      <% if current_user.applied_to?(@event) %>
+        <%= form_with url: user_received_messages_path(@event.user), method: :post do |f| %>
+          <%= f.hidden_field :content, value: "Your message here" %>
+          <%= f.submit "Send message", class: "btn btn-outline-dark" %>
+        <% end %>
+      <% else %>
+        <%= link_to event_bookings_path(@event), data: { turbo_method: :post } do %>
+          <p>Postulate position</p>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
+
+
 
   <div class="event-show-content-row">
 
