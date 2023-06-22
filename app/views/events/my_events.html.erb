@@ -2,27 +2,27 @@
   <% if @created_events.empty? %>
     <h1>It looks like you haven't created an event yet.</h1>
     <p>Click on the button bellow to help you find musicians for your event.</p>
-    <%= link_to "Create new event", new_event_path, class: "btn btn-primary" %>
+    <%= link_to "Create new event", new_event_path, class: "text-white btn btn-primary" %>
   <% else %>
-    <h1 class="text-white my-4">Events I Created:</h1>
-    <%= link_to "Create new event", new_event_path, class: "text-white btn btn-primary m-3" if policy(Event).new? %>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4" data-event-target="events">
-      <% @created_events.each do |event| %>
-        <div class="col mb-4">
-          <%= link_to event, class: "text-decoration-none" do %>
-            <div class="card">
-                <% if event.image.attached?%>
-                  <%= image_tag url_for(event.image)%>
-                <% else %>
-                  <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
-                <% end %>
-              <h5 style="margin-top: 10px; margin-left: 5px; margin-bottom: 10px;"><strong><%= event.title %></strong></h5>
-              <p style="margin: 5px; color: #706F8F;"><strong>Duration:</strong> <%= event.duration %> min</p>
-              <p style="margin: 5px; color: #706F8F;"><strong>Description::</strong> <%= event.description %></p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <h1>Events I Created:</h1>
+      <div class="my-events-row" data-event-target="events">
+        <% @created_events.each do |event| %>
+          <div>
+            <%= link_to event do %>
+              <div class="my-events-card">
+                  <% if event.image.attached?%>
+                    <%= image_tag url_for(event.image)%>
+                  <% else %>
+                    <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
+                  <% end %>
+                <h3><strong><%= event.title %></strong></h3>
+                <p style="margin: 5px; color: #706F8F;"><strong>Duration:</strong> <%= event.duration %> min</p>
+                <p style="margin: 5px; color: #706F8F;"><strong>Description::</strong> <%= event.description %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <%= link_to "Create new event", new_event_path, class: "text-white btn btn-primary" if policy(Event).new? %>
   <% end %>
 </div>

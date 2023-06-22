@@ -12,10 +12,11 @@
 
 .genre-filter-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 5px;
   gap: 20px;
-  overflow: auto;
+  overflow-x: auto;
+  max-width: 100%;
   margin-bottom: 20px;
   margin-top: 20px;
 }
