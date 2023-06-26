@@ -2,3 +2,37 @@
   width: 80%;
   margin: 15px auto;
 }
+
+.my-events-container h1, h3 {
+  color : white;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.my-event-row {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+my-events-card {
+  margin: 15px;
+  background-color: $blue-80;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 20px;
+  width: 330px;
+}
+
+@media (min-width: 768px) {
+  .my-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .my-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -8,11 +8,13 @@
     <%= f.input :artist_name, label: "Band Name" %>
     <%= f.input :artist_instrument, label: "Instruments" %>
     <%= f.input :artist_location, label: "Based in" %>
-    <%= f.input :artist_travel, label: "Are you a traveling artist?" %>
-    <%= f.input :artist_radius, label: "How far are you willing to travel?" %>
-    <%= f.input :artist_cities, label: "What cities would you travel to?" %>
     <%= f.input :artist_description, label: "Give us a breff description of the band" %>
     <%= f.input :artist_price, label: "How much do you charge the hour?" %>
+    <%= f.input :artist_travel, label: "Are you a traveling artist?", input_html: { data: { controller: "toggle", "toggle-artist-travel-value": @dashboard.artist_travel.to_s, action: "change->toggle#toggle" } } %>
+    <div data-toggle-target="target" class="hidden">
+      <%= f.input :artist_radius, label: "How far are you willing to travel?" %>
+      <%= f.input :artist_cities, label: "What cities would you travel to?" %>
+    </div>
   </div>
 
   <div class="form-actions btn btn-primary">

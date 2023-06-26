@@ -2,8 +2,12 @@ class ChatroomPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      current_user.chatrooms
+      @user.chatrooms
     end
+  end
+
+  def index?
+    true
   end
 
   def show?
