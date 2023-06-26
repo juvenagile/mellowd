@@ -15,6 +15,7 @@ class DashboardsController < ApplicationController
   def new
     @dashboard = Dashboard.new
     authorize @dashboard
+    @artist_travel_value = @dashboard.artist_travel
   end
 
   # GET /dashboards/1/edit
