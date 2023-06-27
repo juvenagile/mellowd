@@ -1,14 +1,8 @@
 <% if user_signed_in? %>
   <nav class="navbar">
     <div class="navbar-brand">
-      <%= link_to root_path do %>
-        <%= image_tag('mellow-logo.svg', class: 'logo', alt: 'MellowD') %>
-      <% end %>
-      <% if current_user.artist %>
-        <p class="text-white" > Artist</p>
-      <% end %>
+         <img src="https://res.cloudinary.com/djuhjudsb/image/upload/v1687805358/mELL0W_d_zmk58k" alt="Casual Jacket">
     </div>
-
 
     <ul class="navbar-nav">
       <li class="navbar-item">
@@ -24,7 +18,7 @@
       </li>
 
       <li class="navbar-item">
-        <%= link_to activity_path, class: "nav-link" do %>
+        <%= link_to my_bookings_path, class: "nav-link" do %>
           <i class="ri-calendar-check-line ri-xl"></i> Activity
         <% end %>
       </li>
