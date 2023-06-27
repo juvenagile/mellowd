@@ -6,7 +6,7 @@
 
   <div class="event-show-image">
   <% if @event.image.attached?%>
-    <%= image_tag url_for(@event.image)%>
+    <%= cl_image_tag @event.image.key, class: "rounded", style: "border-radius: 15px !important;" %>
   <% else %>
     <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
   <% end %>
