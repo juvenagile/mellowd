@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   get '/video-content', to: 'dashboards#video'
   get '/images-content', to: 'dashboards#images'
   get 'activity', to: 'messages#index', as: :activity
+  get '/users/:id', to: 'users#show', as: :user_id
 end
