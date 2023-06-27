@@ -1,8 +1,30 @@
+<%# class Dashboard < ApplicationRecord
+  belongs_to :user
+  has_many_attached :images
+  has_many_attached :videos
+  has_many_attached :audios
+
+  has_many :user_dashboards, dependent: :destroy
+  has_many :users, through: :user_dashboards
+
+  validates :artist_genre, presence: true
+  validates :artist_count, presence: true
+  validates :artist_name, presence: true
+  validates :artist_instrument, presence: true
+  validates :artist_location, presence: true
+  validates :artist_radius, presence: true
+  validates :artist_cities, presence: true
+  validates :artist_description, presence: true
+  validates :artist_price, presence: true
+  validates :artist_count, numericality: { only_integer: true }
+end %>
+
 <%= simple_form_for(@dashboard) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs border border-light p-4 rounded mb-4">
+    <%= f.input :avatar, as: :file, label: "Upload avatar" %>
     <%= f.input :artist_genre, as: :select, collection: %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir], label: "Band genre" %>
     <%= f.input :artist_count, label: "Number of artist" %>
     <%= f.input :artist_name, label: "Band Name" %>
@@ -11,10 +33,13 @@
     <%= f.input :artist_description, label: "Give us a breff description of the band" %>
     <%= f.input :artist_price, label: "How much do you charge the hour?" %>
     <%= f.input :artist_travel, label: "Are you a traveling artist?", input_html: { data: { controller: "toggle", "toggle-artist-travel-value": @dashboard.artist_travel.to_s, action: "change->toggle#toggle" } } %>
-    <div data-toggle-target="target" class="hidden">
+    <div data-toggle-target="target" >
       <%= f.input :artist_radius, label: "How far are you willing to travel?" %>
       <%= f.input :artist_cities, label: "What cities would you travel to?" %>
     </div>
+    <%= f.input :images, as: :file, input_html: { multiple: true }, label: "Upload images" %>
+    <%= f.input :videos, as: :file, input_html: { multiple: true }, label: "Upload videos" %>
+    <%= f.input :audios, as: :file, input_html: { multiple: true }, label: "Upload audios" %>
   </div>
 
   <div class="form-actions btn btn-primary">

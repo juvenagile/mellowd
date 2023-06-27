@@ -1,6 +1,10 @@
 class Dashboard < ApplicationRecord
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
+  has_many_attached :videos
+  has_many_attached :audios
+  has_one_attached :avatar
+
   has_many :user_dashboards, dependent: :destroy
   has_many :users, through: :user_dashboards
 

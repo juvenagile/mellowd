@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="profile-buttons">
+    <%#= button_to "Edit Avatar", edit_avatar_path %>
+    <%#= button_to "Edit Cover Photo", edit_cover_photo_path %>
+  </div>
+
+  <div class="profile-links">
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-primary" %>
+    <%= link_to "Change Password", edit_user_password_path,  class: "btn btn-outline-primary" %>
+    <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-outline-primary"  %>
+  </div>
+</div>
+

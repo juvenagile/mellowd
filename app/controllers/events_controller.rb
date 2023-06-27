@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   # GET /events/my_events
   def my_events
-    @user = current_user
+    # @user = current_user
     @applied_events = current_user.events
     @created_events = current_user.created_events
     authorize @created_events
@@ -12,6 +12,7 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
+    # @user = current_user
     @events = policy_scope(Event)
     @events = Event.all
 
