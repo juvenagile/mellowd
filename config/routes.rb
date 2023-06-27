@@ -15,6 +15,20 @@ Rails.application.routes.draw do
     resources :received_messages, only: :create
   end
 
+  resources :users do
+    member do
+      patch :update_profile_picture
+    end
+  end
+
+  resources :users do
+    member do
+      get :edit_password
+      put :update_password
+      delete :delete_profile_picture
+    end
+  end
+
   resources :dashboards
   resources :chatrooms, only: %i[show index create destroy] do
     resources :messages, only: :create

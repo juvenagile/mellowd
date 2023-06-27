@@ -1,0 +1,36 @@
+.show-user-container {
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 20px;
+  align-items: start;
+  // display: flex;
+  flex-direction: column;
+  // flex-wrap: wrap;
+}
+
+.user-profile-buttons a {
+  display: block;
+  padding: 20px;
+  border: 1px solid $primary;
+  text-decoration: none;
+  color: white;
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.user-profile-picture {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  line-height: 30px;
+}
+
+.user-profile-picture img {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  margin-bottom: 20px;
+}
