@@ -46,6 +46,7 @@ class BookingsController < ApplicationController
   def my_bookings
     @my_bookings = current_user.bookings
     authorize @my_bookings
+    # @user = current_user
   end
 
   private

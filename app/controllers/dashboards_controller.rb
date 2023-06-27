@@ -15,6 +15,7 @@ class DashboardsController < ApplicationController
   def new
     @dashboard = Dashboard.new
     authorize @dashboard
+    @artist_travel_value = @dashboard.artist_travel
   end
 
   # GET /dashboards/1/edit
@@ -87,6 +88,6 @@ class DashboardsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def dashboard_params
-    params.require(:dashboard).permit(:artist_genre, :artist_count, :artist_name, :artist_instrument, :artist_location, :artist_travel, :artist_radius, :artist_cities, :artist_description, :artist_price)
+    params.require(:dashboard).permit(:artist_genre, :artist_count, :artist_name, :artist_instrument, :artist_location, :artist_travel, :artist_radius, :artist_cities, :artist_description, :artist_price, :avatar, images: [], videos: [], audios: [])
   end
 end

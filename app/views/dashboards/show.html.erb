@@ -43,16 +43,49 @@
   <div data-controller="tabs" data-id="<%= @dashboard.id %>">
     <ul class="list-inline tabs-underlined">
       <li>
-        <a href="" data-action="click->tabs#showAudio" class="tab-underlined active">Audio</a>
+        <button data-action="click->tabs#shiftTab" id="audio" class="btn btn-outline-primary">Audio</button>
       </li>
       <li>
-        <a href="" data-action="click->tabs#showVideo" class="tab-underlined">Video</a>
+        <button data-action="click->tabs#shiftTab" id="video" class="btn btn-outline-primary">Video</button>
       </li>
       <li>
-        <a href="" data-action="click->tabs#showImages" class="tab-underlined">Images</a>
+        <button data-action="click->tabs#shiftTab" id="image" class="btn btn-outline-primary">Images</button>
       </li>
     </ul>
-    <div id="tab-content" data-tabs-target="content"></div>
+    <div id="audio-tab" data-tabs-target="tab">
+      <% @dashboard.audios.each do |audio| %>
+        <div class="card m-3">
+          <div class="card-body">
+            <%= cl_audio_tag(audio.key, :controls => true, :preload => "none") %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div id="video-tab" data-tabs-target="tab" class="d-none">
+      <%  @dashboard.videos.each do |video| %>
+        <div class="card m-3">
+          <div class="card-body">
+            <div class="embed-responsive embed-responsive-16by9">
+              <%= cl_video_tag(video.key, 
+                :loop => true, :controls => true,
+                :transformation => [
+                  :height=>360, :width=>480, :crop=>"pad",
+                  :quality=>70, :duration=>"10"],
+                :fallback_content => "Your browser does not support HTML5 video tags." ) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div id="image-tab" data-tabs-target="tab" class="d-none">
+      <% @dashboard.images.each do |image| %>
+        <div class="card m-3">
+          <div class="card-body">
+            <%= cl_image_tag(image.key, :height=>100, :width=>100, :crop=>"fill", :quality=>70) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <% if current_user.id != @dashboard.user.id && @dashboard.user.artist %>

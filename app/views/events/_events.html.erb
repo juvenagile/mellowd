@@ -8,18 +8,14 @@
             <%# _event-card.html.erb %>
             <div class="event-card-container">
               <div class="event-card">
-                <% if event.image.attached?%>
-                  <%= image_tag url_for(event.image), class: "event-card-image"%>
-                <% else %>
-                  <%= image_tag("marco-mons-DIXT8Z9p-Sg-unsplash.jpg", class: "event-card-image") %>
-                <% end %>
+                <%= cl_image_tag event.image.key, class: "event-card-image" %>
 
                 <div class="event-card-header">
                   <h5 class="event-card-main-title"><%= event.title %></h5>
 
                   <div class="event-card-user">
 
-                    <%= image_tag("priscilla-du-preez-v0kQglce46E-unsplash.jpg", class: "imgCard avatar") %>
+                    <%= cl_image_tag("tfmziqxdfzd5tltagg6o.jpg")  %>
 
                     <p class="event-card-second-title"><%= event.genre %></p>
                   </div>

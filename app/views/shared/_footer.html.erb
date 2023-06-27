@@ -3,9 +3,8 @@
     <div class="footer-container">
       <div class="footer-brand-container">
         <%= link_to root_path do %>
-          <%= image_tag('mellow-logo.svg', alt: 'MellowD') %>
+          <img src="https://res.cloudinary.com/djuhjudsb/image/upload/v1687805358/mELL0W_d_zmk58k" alt="MellowD">
         <% end %>
-
         <p class="footer-info-text">Own your music and be hired as an independent artist.</p>
 
         <div class="footer-links">
@@ -19,9 +18,14 @@
 
       <div class="footer-explore-container">
         <h4 class="footer-explore-title">Explore</h4>
-        <a class="footer-info-text" href="discovers">Upload content</a>
-        <a class="footer-info-text" href="/users/edit">Be an artist</a>
-        <a class="footer-info-text" href="/events/new">Create an event</a>
+        <%= link_to "See content", discovers_path, class: "footer-info-text" %>
+        <% if current_user.artist? %>
+          <%= link_to "Upload music", dashboards_path, class: "footer-info-text" %>
+        <% else %>
+          <%= link_to "Be an artist", user_id_path(@user), class: "footer-info-text" do %>
+          <% end %>
+        <% end %>
+        <%= link_to "Create an event", new_event_path, class: "footer-info-text" %>
       </div>
 
       <div class="footer-nesletter-container input-container">

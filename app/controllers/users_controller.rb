@@ -6,4 +6,8 @@ class UsersController < ApplicationController
     @user = current_user
     @user = User.find(params[:id])
   end
+
+  def show
+    skip_authorization
+  end
 end
