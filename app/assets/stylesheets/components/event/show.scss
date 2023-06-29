@@ -1,6 +1,5 @@
 .event-show-container{
-  max-width: 1140px;
-  margin: 0 auto;
+  margin: 40px;
 }
 
 .event-image {
@@ -25,14 +24,11 @@
   background: $purple-primary;
   border-radius: 20px;
   color: white;
-  font-weight: 500;
-  font-size: $font-size-m;
-  line-height: 140%;
   margin-top: 40px;
 }
 
 .event-show-postulate-button:hover{
-  background: $neutral-100;
+  background: rgb(103, 0, 182);
 }
 
 .event-show-edit{
@@ -76,6 +72,7 @@
   margin-bottom: 40px;
   flex-basis: 50%;
   max-width: 50%;
+  height: 100%;
 }
 
 .event-show-map [data-controller="map"] {

@@ -8,11 +8,25 @@ Rails.application.routes.draw do
   get "my_bookings", to: "bookings#my_bookings", as: :my_bookings
   resources :discovers, except: [:update]
   resources :events do
-    resources :bookings, only: %i[index show create]
+    resources :bookings, only: %i[index show create destroy]
   end
 
   resources :users, only: [] do
     resources :received_messages, only: :create
+  end
+
+  resources :users do
+    member do
+      patch :update_profile_picture
+    end
+  end
+
+  resources :users do
+    member do
+      get :edit_password
+      put :update_password
+      delete :delete_profile_picture
+    end
   end
 
   resources :dashboards

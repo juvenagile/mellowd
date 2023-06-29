@@ -22,14 +22,13 @@
 
 .banner img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
 .tabs-underlined {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .tabs-underlined .tab-underlined {
@@ -45,6 +44,76 @@
 .tabs-underlined .tab-underlined.active {
   opacity: 1;
   border-bottom: 3px solid #555555;
+}
+
+.my-dashboard-card {
+  border-radius: 15px;
+  margin: 20px;
+}
+
+#video-tab {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.my-dashboard-card video {
+  border-radius: 15px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 350px;
+}
+
+#image-tab {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.my-dashboard-card img {
+  border-radius: 15px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+}
+
+.modal button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 15px;
+  background-color: transparent;
+  border: 1px solid $purple-primary;
+  padding: 10px;
+  color: $purple-primary;
 }
 
 @media (max-width: 576px) {

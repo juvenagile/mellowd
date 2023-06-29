@@ -1,33 +1,11 @@
-.nav-container {
+.event-genre-icon-buttons {
   background-color: $blue-80;
+  padding: 40px 40px 0 40px;
+}
+
+
+.nav-container {
   width: 100%;
-}
-
-.icon-link {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-
-.genre-filter-container {
-  display: flex;
-  justify-content: flex-start;
-  padding: 5px;
-  gap: 20px;
-  overflow-x: auto;
-  max-width: 100%;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
-.genre-icon-link {
-  color: $neutral-20;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: $font-size-m;
 }
 
 .nav-index-title {
@@ -36,6 +14,7 @@
   font-size: $font-size-l;
   line-height: 140%;
   margin: 0;
+  color: white;
 }
 
 .index-event-buttons-row{
@@ -57,6 +36,49 @@
   font-weight: 400;
   line-height: 160%;
   color: $neutral-40;
+}
+
+.outer-container {
+  position: relative;
+}
+
+.outer-container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0), $blue-80);
+}
+
+.outer-container:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), $blue-80);
+}
+
+.genre-filter-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  gap: 40px;
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 20px 10px 20px 10px;
+}
+
+.genre-icon-link {
+  color: $neutral-20;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: $font-size-m;
 }
 
 .event-cards-render{
