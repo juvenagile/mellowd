@@ -41,7 +41,16 @@ class DashboardsController < ApplicationController
   # PATCH/PUT /events/1
   def update
     authorize @dashboard
+
+    existing_audios = @dashboard.audios.attachments
+    existing_videos = @dashboard.videos.attachments
+    existing_images = @dashboard.images.attachments
+
     if @dashboard.update(dashboard_params)
+      # Append the newly uploaded files to the existing attachments
+      @dashboard.audios.attach(existing_audios) if existing_audios.present?
+      @dashboard.videos.attach(existing_videos) if existing_videos.present?
+      @dashboard.images.attach(existing_images) if existing_images.present?
       redirect_to @dashboard, notice: "Dashboard was successfully updated."
     else
       render :edit, status: :unprocessable_entity

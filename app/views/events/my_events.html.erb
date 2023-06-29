@@ -1,8 +1,13 @@
+
+<%= link_to :back do %>
+  <i class="fas fa-arrow-left"></i>
+<% end %>
+
 <div class="my-events-container">
   <% if @created_events.empty? %>
     <h1>It looks like you haven't created an event yet.</h1>
     <p>Click on the button bellow to help you find musicians for your event.</p>
-    <%= link_to "Create new event", new_event_path, class: "text-white btn btn-primary" %>
+    <%= link_to "Create new event", new_event_path, class: "create-event-btn" %>
   <% else %>
     <h1>Events I Created:</h1>
       <div class="my-events-row" data-event-target="events">
@@ -13,16 +18,16 @@
                   <% if event.image.attached?%>
                     <%= image_tag url_for(event.image)%>
                   <% else %>
-                    <%= image_tag "https://picsum.photos/seed/picsum/200/200", class: "rounded", style: "border-radius: 15px !important;" %>
+                    <%= image_tag "https://picsum.photos/seed/picsum/200/200" %>
                   <% end %>
-                <h3><strong><%= event.title %></strong></h3>
-                <p style="margin: 5px; color: #706F8F;"><strong>Duration:</strong> <%= event.duration %> min</p>
-                <p style="margin: 5px; color: #706F8F;"><strong>Description::</strong> <%= event.description %></p>
+                <h3 class="the-event-title"><%= event.title %></h3>
+                <p class="the-event-info">Duration: <%= event.duration %> min</p>
+                <p class="the-event-info">Description:: <%= event.description %></p>
               </div>
             <% end %>
           </div>
         <% end %>
       </div>
-    <%= link_to "Create new event", new_event_path, class: "text-white btn btn-primary" if policy(Event).new? %>
+    <%= link_to "Create new event", new_event_path, class: "create-event-btn" if policy(Event).new? %>
   <% end %>
 </div>

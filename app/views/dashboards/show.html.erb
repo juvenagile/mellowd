@@ -1,24 +1,27 @@
 <%= link_to :back do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
-<div class="text-center text-white">
-  <img src="https://th.bing.com/th/id/OIG.HYuQ2tVozTi_krzbh3Td?pid=ImgGn" alt="Cover photo" class="banner">
-  <div class="dashboard-banner-logo">
-    Logo
-  </div>
 
-  <div class="container info">
+<div class="dashboard-container-main">
+  <img src="https://th.bing.com/th/id/OIG.HYuQ2tVozTi_krzbh3Td?pid=ImgGn" alt="Cover photo" class="artist-dashboard-banner">
+  <% if @dashboard.avatar.present? %>
+    <%= cl_image_tag @dashboard.avatar.key, alt: "Profile Picture", class: "dashboard-banner-logo" %>
+  <% else %>
+    <%= image_tag "https://res.cloudinary.com/djuhjudsb/image/upload/v1687887823/tq49o29k_ofz8ad.png", class: "dashboard-banner-logo", alt: "Alt Profile Picture" %>
+  <% end %>
+  <div class="artist-dashboard-info">
     <h1><%= @dashboard.artist_name %></h1>
-    <div class="d-flex justify-content-center">
-      <div class="mx-3">
+    <h4><%= @dashboard.artist_description %></h4>
+    <div class="dashboard-info-icons">
+      <div class="dashboard-info-icon">
         <i class="fas fa-map-marker-alt"></i>
         <p><%= @dashboard.artist_location %></p>
       </div>
-      <div class="mx-3">
+      <div class="dashboard-info-icon">
         <i class="fas fa-users"></i>
         <p><%= @dashboard.artist_count %></p>
       </div>
-      <div class="mx-3">
+      <div class="dashboard-info-icon">
         <i class="fas fa-music"></i>
         <p><%= @dashboard.artist_genre %></p>
       </div>
@@ -28,18 +31,6 @@
     <% if @dashboard.artist_travel %>
       <p>Traveling Radius: <%= @dashboard.artist_radius %> miles</p>
       <p>Traveling Cities: <%= @dashboard.artist_cities %></p>
-    <% end %>
-
-    <% if policy(@dashboard).edit? %>
-      <%= link_to edit_dashboard_path(@dashboard) do %>
-        <i class="fa-regular fa-pen-to-square text-white"></i>
-      <% end %>
-    <% end %>
-
-    <% if policy(@dashboard).destroy? %>
-      <%= button_to @dashboard, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", style: "background-color: transparent; border-color: transparent;" do %>
-        <i class="fa-regular fa-trash-can text-white"></i>
-      <% end %>
     <% end %>
   </div>
 
@@ -59,7 +50,10 @@
       <% @dashboard.audios.each do |audio| %>
         <div class="my-dashboard-card">
           <div class="my-dashboard-card-body">
-            <%= cl_video_tag(audio.key, format: 'wav', controls: true, preload: "none") %>
+            <audio controls>
+              <source src="<%= cl_video_path(audio.key, resource_type: :video, format: 'mp3') %>" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
           </div>
         </div>
       <% end %>
@@ -88,8 +82,47 @@
         <button data-action="click->image-gallery#close">Close</button>
       </div>
     </div>
+  </div>
+  <div class="dashboard-action-btn">
+    <% if policy(@dashboard).edit? %>
+      <%= link_to "Edit dashboard", edit_dashboard_path(@dashboard), class: "edit" %>
+    <% end %>
 
-  <% if current_user.id != @dashboard.user.id && @dashboard.user.artist %>
-    <%= link_to "Send message to artist", chatrooms_path(user_id: @dashboard.user), class: "btn btn-primary m-3", data: {turbo_method: :post} if policy(Event).new? %>
-  <% end %>
+    <% if policy(@dashboard).destroy? %>
+      <%= button_to "Delete dashboard", @dashboard, method: :delete, data: { confirm: "Are you sure?" }, class: "delete" %>
+    <% end %>
+
+    <% if current_user == @dashboard.user %>
+      <button type="button" data-toggle="modal" data-target="#uploadModal" class="upload-button">
+        Upload content
+      </button>
+      <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <!-- Modal content goes here -->
+        <%= form_with(model: @dashboard) do |f| %>
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="uploadModalLabel">Upload Content</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= f.file_field :audios, multiple: true, accept: 'audio/*', label: "Upload audios" %>
+                <%= f.file_field :videos, multiple: true, accept: 'video/*', label: "Upload videos" %>
+                <%= f.file_field :images, multiple: true, accept: 'image/*', label: "Upload images" %>
+              </div>
+              <div class="modal-footer">
+                <%= f.submit "Upload", class: "upload" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if current_user.id != @dashboard.user.id && @dashboard.user.artist %>
+      <%= link_to "Send message to artist", chatrooms_path(user_id: @dashboard.user), class: "message", data: {turbo_method: :post} if policy(Event).new? %>
+    <% end %>
+  </div>
 </div>

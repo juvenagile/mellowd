@@ -34,9 +34,9 @@
       <%= f.input :artist_cities, label: "What cities would you travel to?" %>
     </div>
     <% if @dashboard.new_record? %>
-      <%= f.input :images, as: :file, input_html: { multiple: true, accept: 'image/*' }, label: "Upload images" %>
-      <%= f.input :videos, as: :file, input_html: { multiple: true, accept: 'video/*' }, label: "Upload videos" %>
       <%= f.input :audios, as: :file, input_html: { multiple: true, accept: 'audio/*' }, label: "Upload audios" %>
+      <%= f.input :videos, as: :file, input_html: { multiple: true, accept: 'video/*' }, label: "Upload videos" %>
+      <%= f.input :images, as: :file, input_html: { multiple: true, accept: 'image/*' }, label: "Upload images" %>
     <% end %>
   </div>
 
