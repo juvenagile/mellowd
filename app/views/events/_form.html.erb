@@ -2,16 +2,14 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs border border-light p-4 rounded mb-4">
+  <div class="new-event-form-inputs">
     <%= f.input :title, label: "Event title" %>
     <%= f.input :genre, as: :select, collection: %w[Rock Pop Urban DJ Ballads Tropical Regional Country Instrumental Choir], label: "Music genre" %>
     <%= f.input :description, label: "Description of the event" %>
     <%= f.input :address, label: "Event address",
       input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-      wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-    %>
-    <p class="my-3">Add image</p>
-     <%= f.input :image, as: :file, input_html: { accept: 'image/*' } %>
+      wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+      <%= f.input :image, as: :file, input_html: { accept: 'image/*' }, label: "Add image" %>
     <h3 class="my-3">Event details</h3>
       <label>Date and time</label>
     <div class="row">
@@ -22,7 +20,7 @@
     <%= f.input :duration, label: "Show duration" %>
   </div>
 
-<div class="form-actions btn btn-primary">
-  <%= f.button :submit, style: "color: white;" %>
+<div class="create-new-event-btn">
+  <%= f.button :submit %>
 </div>
 <% end %>

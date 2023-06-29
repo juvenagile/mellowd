@@ -14,9 +14,9 @@
 
   <% if current_user.artist && current_user != @event.user %>
     <% if current_user.applied_to?(@event) %>
-      <%= form_with url: user_received_messages_path(@event.user), method: :post do |f| %>
+      <%= form_with url: user_received_messages_path(@event.user), method: :post, id: "message-form" do |f| %>
         <%= f.hidden_field :content, value: "Your message here" %>
-        <%= f.submit "Send message", class: "event-show-postulate-button" %>
+        <%= f.submit "Send message", class: "event-show-postulate-button", id: "send-message-button" %>
       <% end %>
     <% else %>
       <%= link_to event_bookings_path(@event), data: { turbo_method: :post }, class: "discover-btn-primary", style: "align-items: flex-end; margin-top: 40px;" do %>
@@ -24,6 +24,7 @@
       <% end %>
     <% end %>
   <% end %>
+
 
   <div class="event-show-edit">
     <% if policy(@event).edit? %>

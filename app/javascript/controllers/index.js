@@ -40,5 +40,8 @@ application.register("tabs", TabsController)
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
 
+import UploadContentController from "./upload_content_controller"
+application.register("upload-content", UploadContentController)
+
 import UploadController from "./upload_controller"
 application.register("upload", UploadController)
