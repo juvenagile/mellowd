@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "my_bookings", to: "bookings#my_bookings", as: :my_bookings
   resources :discovers, except: [:update]
   resources :events do
-    resources :bookings, only: %i[index show create]
+    resources :bookings, only: %i[index show create destroy]
   end
 
   resources :users, only: [] do

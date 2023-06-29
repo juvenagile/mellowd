@@ -1,11 +1,27 @@
 .show-user-container {
-  margin-left: 40px;
-  margin-right: 40px;
-  padding: 20px;
-  align-items: start;
-  // display: flex;
-  flex-direction: column;
-  // flex-wrap: wrap;
+  margin: 40px;
+}
+
+.user-profile-picture {
+  display: flex;
+  justify-content: center;
+}
+
+.user-profile-picture img {
+  box-shadow: 0px 0px 10px 2px rgba(36, 7, 100, 0.75);
+  width: 150px;
+  border-radius: 15px;
+  margin-top: 40px;
+  position: relative;
+}
+
+#my-label:before {
+  position: absolute;
+  top: inherit;
+  left: inherit;
+  right: inherit;
+  bottom: inherit;
+  cursor: pointer;
 }
 
 .user-profile-buttons a {
@@ -18,19 +34,4 @@
   border-radius: 15px;
   margin-bottom: 40px;
   margin-top: 40px;
-}
-
-.user-profile-picture {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-  margin-top: 40px;
-  line-height: 30px;
-}
-
-.user-profile-picture img {
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  margin-bottom: 20px;
 }

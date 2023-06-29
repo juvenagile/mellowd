@@ -1,20 +1,26 @@
-<% if @dashboards.empty? %>
-  <p>It looks like you don't have any dashboards. Create a new one to upload your content.</p>
-  <%= link_to "Create new dashboard", new_dashboard_path, class: "btn btn-primary text-white" %>
-<% else %>
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
-    <% @dashboards.each do |dashboard| %>
-      <% if dashboard && dashboard.persisted? %>
-        <div class="col mb-4">
-          <%= link_to dashboard_path(dashboard), class: "text-decoration-none" do %>
-            <div class="card">
-              <h5 style="margin-top: 10px; margin-left: 5px; margin-bottom: 10px;"><strong><%= dashboard.artist_name %></strong></h5>
-              <p style="margin: 5px; color: #706F8F;"><strong>Artist Genre:</strong> <%= dashboard.artist_genre %></p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-  <%= link_to "Create new dashboard", new_dashboard_path, class: "btn btn-primary text-white" %>
+<%= link_to :back do %>
+  <i class="fas fa-arrow-left"></i>
 <% end %>
+<div class="dashboard-index-container">
+  <% if @dashboards.empty? %>
+    <h1>It looks like you don't have any dashboards.</h1>
+    <p>Create a new one to upload your content.</p>
+    <%= link_to "Create new dashboard", new_dashboard_path, class: "new-dashboard-button" %>
+  <% else %>
+    <div class="new-dashboard-row">
+      <% @dashboards.each do |dashboard| %>
+        <% if dashboard && dashboard.persisted? %>
+          <div class="col mb-4">
+            <%= link_to dashboard_path(dashboard) do %>
+              <div class="new-dashboard-card">
+                <h5 style="margin-top: 10px; margin-left: 5px; margin-bottom: 10px;"><strong><%= dashboard.artist_name %></strong></h5>
+                <p style="margin: 5px; color: #706F8F;"><strong>Artist Genre:</strong> <%= dashboard.artist_genre %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= link_to "Create new dashboard", new_dashboard_path, class: "new-dashboard-button" %>
+  <% end %>
+</div>

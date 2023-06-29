@@ -1,0 +1,32 @@
+.edit-profile-container {
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.artist-toggle-edit {
+  font-weight: bold;
+  color: white !important;
+  font-size: x-large;
+}
+
+.update-button-edit {
+  padding: 10px;
+  background-color: $purple;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.delete-button-edit {
+  padding: 10px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: red;
+  border-color: 1px solid red;
+  background-color: transparent;
+}

@@ -13,6 +13,9 @@ application.register("chatroom-subscription", ChatroomSubscriptionController)
 import EventController from "./event_controller"
 application.register("event", EventController)
 
+import FadeOutController from "./fade_out_controller"
+application.register("fade-out", FadeOutController)
+
 import GenreController from "./genre_controller"
 application.register("genre", GenreController)
 
@@ -22,6 +25,12 @@ application.register("hello", HelloController)
 import HideStuffController from "./hide_stuff_controller"
 application.register("hide-stuff", HideStuffController)
 
+import ImageGalleryController from "./image_gallery_controller"
+application.register("image-gallery", ImageGalleryController)
+
+import InstrumentsController from "./instruments_controller"
+application.register("instruments", InstrumentsController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
 
@@ -30,3 +39,6 @@ application.register("tabs", TabsController)
 
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
+
+import UploadController from "./upload_controller"
+application.register("upload", UploadController)

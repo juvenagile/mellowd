@@ -106,6 +106,29 @@ ARTIST_DESCRIPTIONS = [
   "Creating a vibrant atmosphere with a seamless fusion of musical genres."
 ].freeze
 
+FIRST_NAME = [
+  "John", "Jane", "Mike", "Emily", "Alex",
+  "Olivia", "Sam", "Sophia", "David", "Emma"
+].freeze
+
+LAST_NAME = [
+  "Doe", "Smith", "Johnson", "Brown", "Davis",
+  "Wilson", "Thompson", "Anderson", "Martinez", "Taylor"
+].freeze
+
+DISCOVER_VIDEOS = [
+  "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812793/2_bldgkm.mp4",
+  "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812794/10_jgfbdr.mp4",
+  "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812797/6_jrd8xr.mp4",
+  "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812801/5_jjdgww.mp4",
+  "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812802/8_se9d9t.mp4",
+  "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812806/1_qqcb2j.mp4",
+  "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812814/main_nari6s.mp4",
+  "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812817/3_qu4iul.mp4",
+  "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812827/7_s5cbyd.mp4",
+  "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812838/9_ylmvbr.mp4",
+  "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812806/4_dqztvb.mp4"
+].freeze
 
 User.destroy_all
 Event.destroy_all
@@ -117,15 +140,15 @@ Dashboard.destroy_all
   user = User.new(
     email: "user#{i}@example.com",
     password: "12345678",
-    first_name: "First Name #{i}",
-    last_name: "Last Name #{i}",
+    first_name: FIRST_NAME.sample,
+    last_name: LAST_NAME.sample,
     artist: artist
   )
 
   image_path = Rails.root.join("app", "assets", "images", "users", "#{i + 1}.jpg")
   # Attach the image file if it exists, otherwise use a default image
   if File.exist?(image_path)
-    user.image.attach(io: File.open(image_path), filename: "#{i + 1}.jpg", content_type: "image/jpeg")
+    user.profile_picture.attach(io: File.open(image_path), filename: "#{i + 1}.jpg", content_type: "image/jpeg")
   end
 
   user.save!
@@ -175,7 +198,7 @@ end
 
   # Attach the image file if it exists, otherwise use a default image
   if File.exist?(image_path)
-    dashboard.image.attach(io: File.open(image_path), filename: "#{i + 1}.jpg", content_type: "image/jpeg")
+    dashboard.images.attach(io: File.open(image_path), filename: "#{i + 1}.jpg", content_type: "image/jpeg")
   end
 
   dashboard.save!
@@ -197,11 +220,11 @@ all_dashboards = Dashboard.all
     dashboard_id: all_dashboards.sample.id
   )
 
-  video_path = Rails.root.join('app', 'assets', 'videos', "#{i + 1}.mp4")
+  video_url = DISCOVER_VIDEOS[i]
 
-  # Attach the video file if it exists, otherwise fallback to the default image
-  if File.exist?(video_path)
-    discover.video.attach(io: File.open(video_path), filename: "#{i + 1}.mp4", content_type: 'video/mp4')
+  # Attach the remote video file if the URL is present
+  if video_url.present?
+    discover.video.attach(io: URI.open(video_url), filename: "#{i + 1}.mp4", content_type: 'video/mp4')
   end
 
   discover.save!

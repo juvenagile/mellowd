@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: :dashboard
 
   def dashboard
     skip_authorization
@@ -26,13 +25,8 @@ class UsersController < ApplicationController
 
   def update_profile_picture
     @user = User.find(params[:id])
-    if params[:user][:profile_picture].present?
-      uploaded_file = params[:user][:profile_picture].path
-      cloudinary_file = Cloudinary::Uploader.upload(uploaded_file)
-      @user.profile_picture = cloudinary_file['public_id']
-      @user.save
-      authorize @user
-    end
+    authorize @user
+    @user.update(user_params)
     redirect_to user_path(@user)
   end
 
@@ -69,6 +63,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:password, :password_confirmation)
+    params.require(:user).permit(:password, :password_confirmation, :profile_picture)
   end
 end

@@ -19,7 +19,6 @@ class BookingsController < ApplicationController
       @booking.status = true
 
       if @booking.save
-
         redirect_to my_bookings_path(@booking.event, @booking), status: :see_other, notice: 'Booking was successfully created.'
       else
         redirect_to event_path(@event), alert: "Something went wrong"
@@ -44,7 +43,7 @@ class BookingsController < ApplicationController
   end
 
   def my_bookings
-    @my_bookings = current_user.bookings
+    @my_bookings = current_user.bookings.includes(:event)
     authorize @my_bookings
     # @user = current_user
   end
