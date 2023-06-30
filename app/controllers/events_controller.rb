@@ -41,8 +41,6 @@ class EventsController < ApplicationController
       "Choir" => "fa-solid fa-people-group",
       "All" => "fa-solid fa-music"
     }
-
-    redirect_to events_path
   end
 
   # GET /events/1
