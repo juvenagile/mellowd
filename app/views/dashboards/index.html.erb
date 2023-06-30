@@ -13,8 +13,10 @@
           <div class="col mb-4">
             <%= link_to dashboard_path(dashboard) do %>
               <div class="new-dashboard-card">
-                <h5 style="margin-top: 10px; margin-left: 5px; margin-bottom: 10px;"><strong><%= dashboard.artist_name %></strong></h5>
-                <p style="margin: 5px; color: #706F8F;"><strong>Artist Genre:</strong> <%= dashboard.artist_genre %></p>
+                <%= image_tag dashboard.avatar, class: "dashboard-avatar-img" %>
+                <h5><strong>You are <%= dashboard.artist_name %></strong></h5>
+                <h5>From <%= dashboard.artist_location %></h5>
+                <p><strong>You are currently <%= dashboard.artist_count %> members.</strong></p>
               </div>
             <% end %>
           </div>
