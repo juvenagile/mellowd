@@ -41,9 +41,8 @@ class EventsController < ApplicationController
       "Choir" => "fa-solid fa-people-group",
       "All" => "fa-solid fa-music"
     }
-    if params[:genre].present? && params[:genre] != "All"
-      render turbo_stream: turbo_stream.update("events", partial: "events", locals: { events: @events, markers: @markers })
-    end
+
+    redirect_to events_path
   end
 
   # GET /events/1
