@@ -40,5 +40,7 @@
 <div class="event-cards-render">
   <%= turbo_frame_tag "events", target: "_top" do %>
       <%= render "events", events: @events, markers: @markers %>
+
+      
   <% end %>
 </div>
