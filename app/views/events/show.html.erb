@@ -28,14 +28,14 @@
 
   <div class="event-show-edit">
     <% if policy(@event).edit? %>
-      <%= link_to edit_event_path(@event) do %>
-        <p><i class="fa-regular fa-pen-to-square"></i> Edit this event</p>
+      <%= link_to edit_event_path(@event), class: "edit-this-event-btn" do %>
+        <p>Edit this event</p>
       <% end %>
     <% end %>
 
     <% if policy(@event).destroy? %>
-      <%= button_to @event, method: :delete, data: { confirm: "Are you sure?" } do %>
-        <p><i class="fa-regular fa-trash-can"></i> Delete this event</p>
+      <%= button_to @event, method: :delete, data: { confirm: "Are you sure?" }, class: "delete-this-event-btn" do %>
+        <p>Delete this event</p>
       <% end %>
     <% end %>
   </div>
