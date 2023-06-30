@@ -130,12 +130,26 @@ DISCOVER_VIDEOS = [
   "https://res.cloudinary.com/djuhjudsb/video/upload/v1687812806/4_dqztvb.mp4"
 ].freeze
 
+AVATAR = [
+  "https://res.cloudinary.com/djuhjudsb/image/upload/v1688063084/development/57irxhd1cokjndwnr3ez7z5udyf5.jpg",
+  "https://res.cloudinary.com/djuhjudsb/image/upload/v1688063086/development/noaba29d1boj7nqyai7h0ij6tsfl.jpg",
+  "https://res.cloudinary.com/djuhjudsb/image/upload/v1688063088/development/il6kauyrhx5fe2gizzkoaiu4v012.jpg",
+  "https://res.cloudinary.com/djuhjudsb/image/upload/v1688063090/development/x7i2m55s95r14657pshq4r6ovpti.jpg",
+  "https://res.cloudinary.com/djuhjudsb/image/upload/v1688063092/development/trk9j3wmijrzyvm0auiffch46hof.jpg",
+  "https://res.cloudinary.com/djuhjudsb/image/upload/v1688063094/development/0rf2tosonjghnqu1gxceh8tkizyb.jpg",
+  "https://res.cloudinary.com/djuhjudsb/image/upload/v1688063097/development/la1te3m1sahz00gljimfyhnwve8x.jpg",
+  "https://res.cloudinary.com/djuhjudsb/image/upload/v1688063099/development/nch1wd231fkw258d4wf06oxwu7r9.jpg",
+  "https://res.cloudinary.com/djuhjudsb/image/upload/v1688063100/development/t1b5cwoaz4djb2hb3fy58veyf6j6.jpg",
+  "https://res.cloudinary.com/djuhjudsb/image/upload/v1688063103/development/pj3ie60zo7oy2w4n94n3jaaar2jv.jpg",
+  "https://res.cloudinary.com/djuhjudsb/image/upload/v1688000366/development/5pv0uxydtefb11zpdzv3umjnoz23.jpg"
+].freeze
+
 User.destroy_all
 Event.destroy_all
 Discover.destroy_all
 Dashboard.destroy_all
 
-10.times do |i|
+5.times do |i|
   artist = i % 2 == 0 ? true : false
   user = User.new(
     email: "user#{i}@example.com",
@@ -157,7 +171,7 @@ end
 
 all_users = User.all
 
-10.times do |i|
+5.times do |i|
   event = Event.new(
     title: EVENT_TITLES.sample,
     description: EVENT_DESCRIPTIONS.sample,
@@ -179,8 +193,9 @@ all_users = User.all
   puts 'Event created'
 end
 
-10.times do |i|
+5.times do |i|
   dashboard = Dashboard.new(
+    # avatar: AVATAR.sample,
     artist_genre: GENRE.sample,
     artist_count: rand(1..10),
     artist_name: ARTIST_NAMES.sample,
@@ -207,7 +222,7 @@ end
 
 all_dashboards = Dashboard.all
 
-10.times do |i|
+5.times do |i|
   discover = Discover.new(
     title: DISCOVER_TITLES.sample,
     content: DISCOVER_CONTENTS.sample,
